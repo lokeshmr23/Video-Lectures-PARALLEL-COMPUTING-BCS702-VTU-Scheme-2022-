@@ -3,7 +3,7 @@
 | Lecture | Topic | Video |
 | --- | --- | --- |
 | M1-L1 | Introduction to parallel programming | [Watch on YouTube](https://youtu.be/Lh5XZpCALt4) |
-| M1-L2 | Classifications of parallel computers| [Watch on YouTube]() |
+| M1-L2 | Classifications of parallel computers| [Watch on YouTube](https://youtu.be/hbrMF81GZFw) |
 | M1-L3 | SIMD systems| [Watch on YouTube](). |
 | M1-L4 | MIMD systems| [Watch on YouTube](). |
 | M1-L5 | Interconnection networks| [Watch on YouTube](). |
