@@ -4,9 +4,9 @@
 | --- | --- | --- |
 | M1-L1 | Introduction to parallel programming | [Watch on YouTube](https://youtu.be/Lh5XZpCALt4) |
 | M1-L2 | Classifications of parallel computers| [Watch on YouTube](https://youtu.be/hbrMF81GZFw) |
-| M1-L3 | SIMD systems| [Watch on YouTube](https://youtu.be/L10iUP2bO4Q). |
-| M1-L4 | MIMD systems| [Watch on YouTube](https://youtu.be/HboCUnvkX9Q). |
-| M1-L5 | Interconnection networks| [Watch on YouTube](). |
+| M1-L3 | SIMD systems| [Watch on YouTube](https://youtu.be/6BGfRvch4OE). |
+| M1-L4 | MIMD systems| [Watch on YouTube](https://youtu.be/LaHDXQsv9e0). |
+| M1-L5 | Interconnection networks| [Watch on YouTube](https://youtu.be/gvW3kdPKscQ). |
 | M1-L6 | Cache coherence| [Watch on YouTube](). |
 | M1-L7 | Shared-memory vs distributed-memory| [Watch on YouTube](). |
 | M1-L8 | Parallel software| [Watch on YouTube](). |
