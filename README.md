@@ -9,7 +9,7 @@
 | M1-L5 | Interconnection networks| [Watch on YouTube](https://youtu.be/gvW3kdPKscQ). |
 | M1-L6 | Cache coherence| [Watch on YouTube](https://youtu.be/ll0MbPQuPFQ?si=ZHvgZBcS9la1YKlw). |
 | M1-L7 | Shared-memory vs distributed-memory| [Watch on YouTube](https://youtu.be/h-a8UWif1ic?si=OtMzBfdv-QF1T6k6). |
-| M1-L8 | Parallel software| [Watch on YouTube](). |
+| M1-L8 | Parallel software| [Watch on YouTube](https://youtu.be/z64fS3PFzdk). |
 
 ### Module 2: GPU Programming, Hybrid Systems and Performance  (08 hours | CO2)
 **Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
