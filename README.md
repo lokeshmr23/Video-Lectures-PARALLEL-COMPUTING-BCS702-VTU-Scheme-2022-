@@ -13,16 +13,54 @@
 
 ### Module 2: GPU Programming, Hybrid Systems and Performance  (08 hours | CO2)
 **Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
+| Lecture | Topic | Video |
+| --- | --- | --- |
+| M1-L1 | GPU programming | [Watch on YouTube]() |
+| M1-L2 | Programming MIMD systems and GPUs| [Watch on YouTube]() |
+| M1-L3 | Performance: speedup and efficiency in MIMD systems| [Watch on YouTube](). |
+| M1-L4 | Amdahl's law and its implications| [Watch on YouTube](). |
+| M1-L5 | Scalability in MIMD systems| [Watch on YouTube](). |
+| M1-L6 | Taking timings of MIMD programs| [Watch on YouTube](). |
+| M1-L7 | GPU performance| [Watch on YouTube](). |
+| M1-L8 | Module 2 revision| [Watch on YouTube](). |
 
 ### Module 3: Distributed Memory Programming with MPI   (08 hours | CO3)
 **Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
+| Lecture | Topic | Video |
+| --- | --- | --- |
+| M1-L1 | MPI basics | [Watch on YouTube]() |
+| M1-L2 | Point-to-point communication| [Watch on YouTube]() |
+| M1-L3 | The trapezoidal rule in MPI| [Watch on YouTube](). |
+| M1-L4 | Collective communication| [Watch on YouTube](). |
+| M1-L5 | Collective communication (continued) | [Watch on YouTube](). |
+| M1-L6 | MPI-derived datatypes| [Watch on YouTube](). |
+| M1-L7 | Performance evaluation of MPI programs| [Watch on YouTube](). |
+| M1-L8 | A parallel sorting algorithm| [Watch on YouTube](). |
 
 ### Module 4: Shared-Memory Programming with OpenMP   (08 hours | CO4)
 **Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
-
+| Lecture | Topic | Video |
+| --- | --- | --- |
+| M1-L1 | OpenMP pragmas and directives | [Watch on YouTube]() |
+| M1-L2 | The trapezoidal rule with OpenMP| [Watch on YouTube]() |
+| M1-L3 | Scope of variables| [Watch on YouTube](). |
+| M1-L4 | Parallel for directive| [Watch on YouTube](). |
+| M1-L5 | Scheduling loops| [Watch on YouTube](). |
+| M1-L6 | Producers and consumers| [Watch on YouTube](). |
+| M1-L7 | Caches| [Watch on YouTube](). |
+| M1-L8 | Tasking and sections| [Watch on YouTube](). |
 ### Module 5: GPU Programming with CUDA   (08 hours | CO5)
 **Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
-
+| Lecture | Topic | Video |
+| --- | --- | --- |
+| M1-L1 | GPUs and GPGPU | [Watch on YouTube]() |
+| M1-L2 | Heterogeneous computing| [Watch on YouTube]() |
+| M1-L3 | Nvidia compute capabilities and device architectures| [Watch on YouTube](). |
+| M1-L4 | Vector addition| [Watch on YouTube](). |
+| M1-L5 | Returning results from CUDA kernels| [Watch on YouTube](). |
+| M1-L6 | CUDA trapezoidal rule I| [Watch on YouTube](). |
+| M1-L7 | CUDA trapezoidal rule II| [Watch on YouTube](). |
+| M1-L8 | CUDA trapezoidal rule III| [Watch on YouTube](). |
 
 More modules and lectures will be added as they are published. ⭐ Star this repo to stay updated! COURSE OUTCOMES PARALLEL COMPUTING Semester VII | Course Code: BCS702 | Credits: 03
 
