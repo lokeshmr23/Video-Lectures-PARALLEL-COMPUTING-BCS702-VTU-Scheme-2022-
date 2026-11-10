@@ -12,10 +12,10 @@
 | M1-L8 | Parallel software| [Watch on YouTube](https://youtu.be/z64fS3PFzdk). |
 
 ### Module 2: GPU Programming, Hybrid Systems and Performance  (08 hours | CO2)
-**Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
+
 | Lecture | Topic | Video |
 | --- | --- | --- |
-| M1-L1 | GPU programming | [Watch on YouTube]() |
+| M1-L1 | GPU programming | [Watch on YouTube](https://youtu.be/Lwke3Q1PbsY) |
 | M1-L2 | Programming MIMD systems and GPUs| [Watch on YouTube]() |
 | M1-L3 | Performance: speedup and efficiency in MIMD systems| [Watch on YouTube](). |
 | M1-L4 | Amdahl's law and its implications| [Watch on YouTube](). |
