@@ -22,7 +22,7 @@
 | M1-L5 | Scalability in MIMD systems| [Watch on YouTube](https://youtu.be/AAv2jGmnyB4). |
 | M1-L6 | Taking timings of MIMD programs| [Watch on YouTube](https://youtu.be/HGg_xrTvu_8?si=y-IMkUvwkmnp4tRN). |
 | M1-L7 | GPU performance| [Watch on YouTube](https://youtu.be/a21K8O0yIdM). |
-| M1-L8 | Module 2 revision| [Watch on YouTube](). |
+| M1-L8 | Module 2 revision| [Watch on YouTube](https://youtu.be/PgWGBIn5qgU). |
 
 ### Module 3: Distributed Memory Programming with MPI   (08 hours | CO3)
 **Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
