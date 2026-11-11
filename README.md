@@ -18,8 +18,8 @@
 | M1-L1 | GPU programming | [Watch on YouTube](https://youtu.be/Lwke3Q1PbsY) |
 | M1-L2 | Programming MIMD systems and GPUs| [Watch on YouTube](https://youtu.be/oR7ee3iao2w) |
 | M1-L3 | Performance: speedup and efficiency in MIMD systems| [Watch on YouTube](https://youtu.be/iVBrZkqsWtE). |
-| M1-L4 | Amdahl's law and its implications| [Watch on YouTube](). |
-| M1-L5 | Scalability in MIMD systems| [Watch on YouTube](). |
+| M1-L4 | Amdahl's law and its implications| [Watch on YouTube](https://youtu.be/9HMkQotYsPs?si=soINFhEY_Be7WuWW). |
+| M1-L5 | Scalability in MIMD systems| [Watch on YouTube](https://youtu.be/AAv2jGmnyB4). |
 | M1-L6 | Taking timings of MIMD programs| [Watch on YouTube](). |
 | M1-L7 | GPU performance| [Watch on YouTube](). |
 | M1-L8 | Module 2 revision| [Watch on YouTube](). |
