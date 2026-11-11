@@ -25,10 +25,10 @@
 | M1-L8 | Module 2 revision| [Watch on YouTube](https://youtu.be/PgWGBIn5qgU). |
 
 ### Module 3: Distributed Memory Programming with MPI   (08 hours | CO3)
-**Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
+
 | Lecture | Topic | Video |
 | --- | --- | --- |
-| M1-L1 | MPI basics | [Watch on YouTube]() |
+| M1-L1 | MPI basics | [Watch on YouTube](https://youtu.be/gcxirLYQvoo) |
 | M1-L2 | Point-to-point communication| [Watch on YouTube]() |
 | M1-L3 | The trapezoidal rule in MPI| [Watch on YouTube](). |
 | M1-L4 | Collective communication| [Watch on YouTube](). |
