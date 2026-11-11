@@ -29,7 +29,7 @@
 | Lecture | Topic | Video |
 | --- | --- | --- |
 | M1-L1 | MPI basics | [Watch on YouTube](https://youtu.be/gcxirLYQvoo) |
-| M1-L2 | Point-to-point communication| [Watch on YouTube]() |
+| M1-L2 | Point-to-point communication| [Watch on YouTube](https://youtu.be/E6iyXQzr_AE) |
 | M1-L3 | The trapezoidal rule in MPI| [Watch on YouTube](). |
 | M1-L4 | Collective communication| [Watch on YouTube](). |
 | M1-L5 | Collective communication (continued) | [Watch on YouTube](). |
