@@ -46,7 +46,8 @@
 | M1-L3 | Scope of variables| [Watch on YouTube](https://youtu.be/iGv7CJg4X8s?si=Uca6CbiQkjEfVG2J). |
 | M1-L4 | Parallel for directive| [Watch on YouTube](https://youtu.be/2IL0SkWSz6g?si=b0oSzV9Ki44w8x3p). |
 | M1-L5 | Scheduling loops| [Watch on YouTube](https://youtu.be/BuxqTiolEcA). |
-| M1-L6 | Producers and consumers| [Watch on YouTube](https://youtu.be/pqg2nGsMvwY). |
+| M1-L6A | Producers and consumers| [Watch on YouTube](https://youtu.be/pqg2nGsMvwY). |
+| M1-L6B | Producers and consumers| [Watch on YouTube](https://youtu.be/MGTOmIiFJm8). |
 | M1-L7 | Caches| [Watch on YouTube](). |
 | M1-L8 | Tasking and sections| [Watch on YouTube](). |
 ### Module 5: GPU Programming with CUDA   (08 hours | CO5)
