@@ -54,7 +54,7 @@
 **Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
 | Lecture | Topic | Video |
 | --- | --- | --- |
-| M1-L1 | GPUs and GPGPU | [Watch on YouTube]() |
+| M1-L1 | GPUs and GPGPU | [Watch on YouTube](https://youtu.be/vw2ZrbfBzNM) |
 | M1-L2 | Heterogeneous computing| [Watch on YouTube]() |
 | M1-L3 | Nvidia compute capabilities and device architectures| [Watch on YouTube](). |
 | M1-L4 | Vector addition| [Watch on YouTube](). |
