@@ -32,8 +32,8 @@
 | M1-L2 | Point-to-point communication| [Watch on YouTube](https://youtu.be/E6iyXQzr_AE) |
 | M1-L3 | The trapezoidal rule in MPI| [Watch on YouTube](https://youtu.be/g6Ji06R3oqQ). |
 | M1-L4 | Collective communication| [Watch on YouTube](https://youtu.be/qNoWJtwBzz0). |
-| M1-L5 | Collective communication (continued) | [Watch on YouTube](). |
-| M1-L6 | MPI-derived datatypes| [Watch on YouTube](). |
+| M1-L5 | Collective communication (continued) | [Watch on YouTube](https://youtu.be/lHBhheL10GE?si=5hRaCG_o1L7j0zPu). |
+| M1-L6 | MPI-derived datatypes| [Watch on YouTube](https://youtu.be/7WUBwDwcKWo). |
 | M1-L7 | Performance evaluation of MPI programs| [Watch on YouTube](). |
 | M1-L8 | A parallel sorting algorithm| [Watch on YouTube](). |
 
