@@ -35,7 +35,7 @@
 | M1-L5 | Collective communication (continued) | [Watch on YouTube](https://youtu.be/lHBhheL10GE?si=5hRaCG_o1L7j0zPu). |
 | M1-L6 | MPI-derived datatypes| [Watch on YouTube](https://youtu.be/7WUBwDwcKWo). |
 | M1-L7 | Performance evaluation of MPI programs| [Watch on YouTube](). |
-| M1-L8 | A parallel sorting algorithm| [Watch on YouTube](). |
+| M1-L8 | A parallel sorting algorithm| [Watch on YouTube](https://youtu.be/M_gSzTrWSm4). |
 
 ### Module 4: Shared-Memory Programming with OpenMP   (08 hours | CO4)
 **Coming Soooooooon!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!**
