@@ -43,9 +43,9 @@
 | --- | --- | --- |
 | M1-L1 | OpenMP pragmas and directives | [Watch on YouTube](https://youtu.be/QWpfR4gqWRQ) |
 | M1-L2 | The trapezoidal rule with OpenMP| [Watch on YouTube](https://youtu.be/C3HTp3XZIUM) |
-| M1-L3 | Scope of variables| [Watch on YouTube](). |
-| M1-L4 | Parallel for directive| [Watch on YouTube](). |
-| M1-L5 | Scheduling loops| [Watch on YouTube](). |
+| M1-L3 | Scope of variables| [Watch on YouTube](https://youtu.be/iGv7CJg4X8s?si=Uca6CbiQkjEfVG2J). |
+| M1-L4 | Parallel for directive| [Watch on YouTube](https://youtu.be/2IL0SkWSz6g?si=b0oSzV9Ki44w8x3p). |
+| M1-L5 | Scheduling loops| [Watch on YouTube](https://youtu.be/BuxqTiolEcA). |
 | M1-L6 | Producers and consumers| [Watch on YouTube](). |
 | M1-L7 | Caches| [Watch on YouTube](). |
 | M1-L8 | Tasking and sections| [Watch on YouTube](). |
