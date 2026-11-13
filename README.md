@@ -58,7 +58,7 @@
 | M1-L2 | Heterogeneous computing| [Watch on YouTube](https://youtu.be/PG5VETuKTNM?si=gUwgI-qqQHVy0ePB) |
 | M1-L3 | Nvidia compute capabilities and device architectures| [Watch on YouTube](https://youtu.be/PG5VETuKTNM?si=5nvBs4vzVoRqPBa6). |
 | M1-L4 | Vector addition| [Watch on YouTube](https://youtu.be/0C25k1O0yOo). |
-| M1-L5 | Returning results from CUDA kernels| [Watch on YouTube](). |
+| M1-L5 | Returning results from CUDA kernels| [Watch on YouTube](https://youtu.be/sAdC1ZV1gg0). |
 | M1-L6 | CUDA trapezoidal rule I| [Watch on YouTube](). |
 | M1-L7 | CUDA trapezoidal rule II| [Watch on YouTube](). |
 | M1-L8 | CUDA trapezoidal rule III| [Watch on YouTube](). |
