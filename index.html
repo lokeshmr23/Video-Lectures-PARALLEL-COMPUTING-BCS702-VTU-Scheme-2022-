@@ -1,0 +1,1829 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BCS702 Parallel Computing — Free VTU Video Lectures (Scheme 2022)</title>
+
+<!-- ============================================================
+     SEO / SOCIAL  — EDIT: live URL, description wording
+     ============================================================ -->
+<meta name="description" content="Free module-wise video lecture series for VTU BCS702 Parallel Computing — Semester VII, Scheme 2022. 5 modules, 41 lectures, CO1–CO5 mapped, with a study-time planner for IA tests and the SEE." />
+<meta name="author" content="Dr. Lokesh M R" />
+<link rel="canonical" href="https://video-lectures-parallel-computing.onrender.com/" /><!-- EDIT: your live URL -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="BCS702 Parallel Computing — Free VTU Video Lectures" />
+<meta property="og:description" content="41 free lectures, module-wise, mapped to CO1–CO5. Built for VTU Semester VII (Scheme 2022) — start with Module 1 and follow the study plan." />
+<meta property="og:image" content="./dr_lokesh_professor_new.png" />
+<meta property="og:url" content="https://video-lectures-parallel-computing.onrender.com/" /><!-- EDIT: your live URL -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="BCS702 Parallel Computing — Free VTU Video Lectures" />
+<meta name="twitter:description" content="Module-wise lecture series for VTU Semester VII (Scheme 2022). 5 modules · 41 lectures · CO1–CO5 · free." />
+<meta name="twitter:image" content="./dr_lokesh_professor_new.png" />
+<meta name="theme-color" content="#0b1c2c" />
+<meta name="color-scheme" content="light dark" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+<!-- ============================================================
+     JSON-LD — Course + Person (sameAs = all your profiles)
+     EDIT: provider name / institution once confirmed.
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Parallel Computing (BCS702) — VTU Scheme 2022",
+  "courseCode": "BCS702",
+  "description": "Free module-wise video lecture series for VTU Semester VII BCS702 Parallel Computing, mapped to course outcomes CO1–CO5, with a study-time planner for IA tests and the SEE.",
+  "inLanguage": "en",
+  "educationalLevel": "Undergraduate",
+  "teaches": ["Introduction to parallel programming, hardware and software", "GPU programming, hybrid systems and performance", "Distributed memory programming with MPI", "Shared-memory programming with OpenMP", "GPU programming with CUDA"],
+  "isAccessibleForFree": true,
+  "provider": {
+    "@type": "Person",
+    "name": "Dr. Lokesh M R",
+    "jobTitle": "Academician and researcher",
+    "image": "./dr_lokesh_professor_new.png",
+    "url": "https://video-lectures-parallel-computing.onrender.com/",
+    "sameAs": [
+      "https://www.youtube.com/@Dr.LokeshMR",
+      "https://www.instagram.com/lokeshmrmysore/",
+      "https://www.linkedin.com/in/lokesh-m-r-b6880b169/",
+      "https://github.com/lokeshmr23",
+      "https://t.me/vtucreat",
+      "https://whatsapp.com/channel/0029VbE13OS7dmeY7Rsgf12o"
+    ]
+  },
+  "hasCourseInstance": {
+    "@type": "CourseInstance",
+    "courseMode": "online",
+    "courseWorkload": "PT8H"
+  }
+}
+</script>
+
+<style>
+/* ============================================================
+   1. DESIGN TOKENS  — EDIT: colours here
+   ============================================================ */
+:root{
+  --bg:#f6f9fc;
+  --bg-soft:#e9f1f7;
+  --surface:#ffffff;
+  --surface-2:#fbfdff;
+  --ink:#0c1c2c;
+  --ink-soft:#2f4459;
+  --muted:#5a7089;
+  --line:#dbe6ef;
+  --navy:#0f2c47;
+  --navy-deep:#081826;
+  --teal:#0e9089;
+  --teal-strong:#0a6f6a;
+  --teal-soft:rgba(14,144,137,.12);
+  --red:#c62828;
+  --gold:#b3842f;
+  --shadow-sm:0 1px 2px rgba(12,28,44,.05), 0 4px 12px rgba(12,28,44,.05);
+  --shadow-md:0 2px 4px rgba(12,28,44,.05), 0 14px 32px rgba(12,28,44,.09);
+  --shadow-lg:0 24px 60px rgba(8,24,38,.22);
+  --radius:16px;
+  --radius-lg:22px;
+  --radius-pill:999px;
+  --maxw:1160px;
+  --nav-h:64px;
+  --serif:"Merriweather",Georgia,"Times New Roman",serif;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+}
+html[data-theme="dark"]{
+  --bg:#07131d;
+  --bg-soft:#0b1c29;
+  --surface:#0e2130;
+  --surface-2:#122838;
+  --ink:#eaf2f8;
+  --ink-soft:#c6d6e3;
+  --muted:#96adbf;
+  --line:#1d3446;
+  --navy:#eaf2f8;
+  --navy-deep:#040c14;
+  --teal:#3ec9be;
+  --teal-strong:#63dcd1;
+  --teal-soft:rgba(62,201,190,.14);
+  --red:#ff6b5e;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4), 0 6px 16px rgba(0,0,0,.28);
+  --shadow-md:0 2px 6px rgba(0,0,0,.4), 0 16px 36px rgba(0,0,0,.34);
+  --shadow-lg:0 24px 60px rgba(0,0,0,.55);
+}
+
+/* ============================================================
+   2. BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.65;
+  color:var(--ink-soft);
+  background:var(--bg);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  padding-bottom:0;
+  transition:background-color .35s ease,color .35s ease;
+}
+h1,h2,h3,h4{font-family:var(--serif);color:var(--ink);line-height:1.2;margin:0 0 .5em;letter-spacing:-.015em}
+h1{font-size:clamp(1.9rem,5.4vw,3.4rem);font-weight:900}
+h2{font-size:clamp(1.45rem,3.6vw,2.15rem);font-weight:700}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0 0 1rem}
+a{color:var(--teal-strong);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block}
+ul,ol{margin:0 0 1rem;padding-left:1.15rem}
+li{margin-bottom:.4rem}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px;border-radius:6px}
+svg{flex:none}
+.wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:clamp(16px,4vw,26px)}
+.skip{position:absolute;left:-9999px;top:0;background:var(--teal);color:#fff;padding:.7rem 1rem;z-index:300;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+.muted{color:var(--muted)}
+.small{font-size:.86rem}
+[hidden]{display:none !important}
+.ph{color:var(--gold);font-weight:600;background:color-mix(in srgb,var(--gold) 13%, transparent);border-radius:4px;padding:0 .15em;font-style:normal}
+
+/* ============================================================
+   3. HEADER
+   ============================================================ */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:color-mix(in srgb, var(--surface) 90%, transparent);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line);
+  transition:box-shadow .25s ease,background-color .35s ease;
+}
+.site-header.scrolled{box-shadow:var(--shadow-sm)}
+.nav{display:flex;align-items:center;gap:10px;min-height:var(--nav-h)}
+.brand{display:flex;align-items:center;gap:9px;margin-right:auto;min-width:0;text-decoration:none}
+.brand:hover{text-decoration:none}
+.brand-mark{
+  width:36px;height:36px;border-radius:11px;flex:none;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--navy-deep),#1d4a68 55%,var(--teal));
+  color:#fff;box-shadow:0 4px 12px rgba(8,24,38,.24);
+}
+.brand-mark svg{width:19px;height:19px}
+.brand-text{display:flex;flex-direction:column;line-height:1.12;min-width:0}
+.brand-name{font-family:var(--serif);font-weight:900;font-size:.95rem;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:min(46vw,320px)}
+.brand-sub{font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-list{display:none;align-items:center;gap:2px;list-style:none;margin:0;padding:0}
+.nav-list li{margin:0}
+.nav-list a{display:block;padding:.45rem .58rem;border-radius:8px;font-size:.83rem;font-weight:500;color:var(--ink-soft);text-decoration:none;transition:all .18s ease}
+.nav-list a:hover{color:var(--teal-strong);background:var(--teal-soft);text-decoration:none}
+.nav-list a.active{color:var(--teal-strong);background:var(--teal-soft);font-weight:700}
+.nav-actions{display:flex;align-items:center;gap:6px}
+.icon-btn{
+  appearance:none;border:1px solid var(--line);background:var(--surface);width:38px;height:38px;
+  border-radius:11px;display:grid;place-items:center;cursor:pointer;color:var(--ink-soft);
+  transition:all .18s ease;padding:0;
+}
+.icon-btn:hover{color:var(--teal-strong);border-color:var(--teal);background:var(--teal-soft)}
+.icon-btn svg{width:18px;height:18px}
+html[data-theme="dark"] .sun-icon{display:block}
+html[data-theme="light"] .sun-icon{display:none}
+html[data-theme="dark"] .moon-icon{display:none}
+@media(min-width:1010px){
+  .nav-list{display:flex}
+  .menu-btn{display:none}
+  .mobile-nav{display:none !important}
+}
+/* narrow screens: keep the header to brand + theme + menu only */
+.bn-short{display:none}
+@media(max-width:620px){
+  .brand-sub{display:none}
+  .brand-mark{width:32px;height:32px;border-radius:9px}
+  .brand-name{max-width:52vw;font-size:.92rem}
+  .yt-btn{display:none}
+}
+@media(max-width:400px){
+  .bn-long{display:none}
+  .bn-short{display:inline}
+  .brand-name{max-width:none}
+}
+.mobile-nav{border-top:1px solid var(--line);background:var(--surface)}
+.mobile-nav ul{list-style:none;margin:0;padding:8px 0 14px;display:grid;gap:1px}
+.mobile-nav a{display:block;padding:.6rem .3rem;border-radius:8px;font-size:.93rem;color:var(--ink-soft);font-weight:500}
+.mobile-nav a:hover{background:var(--teal-soft);color:var(--teal-strong);text-decoration:none}
+
+/* ============================================================
+   4. BUTTONS / BADGES
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:.72rem 1.1rem;border-radius:12px;border:1px solid transparent;
+  font-family:var(--sans);font-size:.9rem;font-weight:700;line-height:1.2;
+  text-decoration:none;cursor:pointer;
+  transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,color .18s ease,border-color .18s ease;
+}
+.btn:hover{text-decoration:none;transform:translateY(-2px)}
+.btn svg{width:16px;height:16px}
+.btn-lg{padding:.9rem 1.35rem;font-size:.97rem;border-radius:13px}
+.btn-sm{padding:.5rem .8rem;font-size:.82rem;border-radius:9px}
+.btn-primary{background:linear-gradient(135deg,var(--teal-strong),var(--teal));color:#fff;box-shadow:0 10px 24px rgba(14,144,137,.32)}
+.btn-primary:hover{color:#fff;box-shadow:0 14px 30px rgba(14,144,137,.4)}
+.btn-yt{background:linear-gradient(135deg,#d32f2f,#b71c1c);color:#fff;box-shadow:0 10px 24px rgba(198,40,40,.32)}
+.btn-yt:hover{color:#fff;box-shadow:0 14px 30px rgba(198,40,40,.4)}
+.btn-navy{background:linear-gradient(135deg,var(--navy-deep),#1d4a68);color:#fff;box-shadow:0 10px 24px rgba(8,24,38,.26)}
+.btn-navy:hover{color:#fff}
+html[data-theme="dark"] .btn-navy{background:linear-gradient(135deg,#17364d,#245873);color:#eaf5fb}
+.btn-ghost{background:var(--surface);color:var(--ink);border-color:var(--line);box-shadow:var(--shadow-sm)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-strong)}
+.badges{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 1.1rem;padding:0;list-style:none}
+.badges li{margin:0}
+.badge{
+  display:inline-flex;align-items:center;gap:6px;padding:.32rem .68rem;border-radius:var(--radius-pill);
+  font-size:.75rem;font-weight:700;color:var(--ink);
+  background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-sm);
+}
+.badge svg{width:13px;height:13px;color:var(--teal-strong)}
+.badge.accent{background:var(--teal-soft);border-color:color-mix(in srgb,var(--teal) 32%, transparent);color:var(--teal-strong)}
+.badge.free{background:linear-gradient(135deg,var(--teal-strong),var(--teal));color:#fff;border-color:transparent}
+</style>
+<style>
+/* ============================================================
+   5. HERO (promo)
+   ============================================================ */
+.hero{
+  position:relative;overflow:hidden;color:#e8f2f9;
+  background:
+    radial-gradient(900px 460px at 82% -8%, rgba(20,175,165,.30), transparent 68%),
+    radial-gradient(700px 420px at 6% 10%, rgba(37,99,140,.34), transparent 70%),
+    linear-gradient(160deg,#081826 0%,#0d2740 52%,#0a3c3c 100%);
+  padding:clamp(26px,4.5vw,50px) 0 clamp(32px,5vw,58px);
+}
+.hero::after{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:46px 46px;
+  -webkit-mask-image:radial-gradient(70% 60% at 50% 30%, #000, transparent 78%);
+  mask-image:radial-gradient(70% 60% at 50% 30%, #000, transparent 78%);
+}
+.hero .wrap{position:relative;z-index:1}
+.hero-grid{display:grid;gap:clamp(22px,3.4vw,42px);align-items:center}
+@media(min-width:920px){
+  .hero-grid{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(26px,3.6vw,50px)}
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:1rem;
+  font-size:.72rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;
+  color:#7fe6dc;background:rgba(20,175,165,.16);
+  border:1px solid rgba(127,230,220,.34);padding:.4rem .8rem;border-radius:var(--radius-pill);
+}
+.hero-eyebrow .live{width:7px;height:7px;border-radius:50%;background:#4fe3d4;box-shadow:0 0 0 3px rgba(79,227,212,.22);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{color:#fff;margin-bottom:.55rem;font-size:clamp(1.75rem,4.4vw,2.85rem);letter-spacing:-.02em;line-height:1.15}
+.hero h1 .hl{
+  background:linear-gradient(105deg,#6ff0e3,#3ec9be 60%,#8fd7ff);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;
+}
+.hero-sub{
+  font-size:clamp(1rem,2.5vw,1.16rem);color:#c3dae8;max-width:56ch;margin:0 0 .85rem;line-height:1.6;
+}
+.hero-sub strong{color:#fff}
+.hero-facts{display:flex;flex-wrap:wrap;gap:7px 9px;margin:0 0 1.35rem;padding:0;list-style:none}
+.hero-facts li{margin:0}
+.hero-facts span{
+  display:inline-flex;align-items:center;gap:6px;padding:.32rem .7rem;border-radius:var(--radius-pill);
+  font-size:.76rem;font-weight:700;color:#dcecf5;
+  background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.18);
+}
+.hero-facts svg{width:13px;height:13px;color:#6ff0e3}
+.btn-row{display:flex;flex-wrap:wrap;gap:10px}
+.hero .btn-ghost{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.28);color:#eaf5fb;box-shadow:none}
+.hero .btn-ghost:hover{background:rgba(255,255,255,.16);color:#fff;border-color:rgba(255,255,255,.45)}
+@media(max-width:620px){
+  .hero{padding-top:clamp(18px,4vw,30px)}
+  .hero .btn-row{gap:8px}
+  .hero .btn-lg{padding:.72rem .7rem;font-size:.86rem;border-radius:11px;text-align:center}
+  .hero .btn-row .btn-yt{flex:1 1 100%}
+  .hero .btn-row .btn-primary,.hero .btn-row .btn-ghost{flex:1 1 44%;min-width:0}
+  .hero-eyebrow{margin-bottom:.75rem}
+  .hero-facts{margin-bottom:1.1rem}
+}
+.hero-cta-note{font-size:.78rem;color:#9dbbcd;margin:.85rem 0 0;display:flex;align-items:center;gap:6px}
+.hero-cta-note svg{width:13px;height:13px;color:#6ff0e3}
+
+/* hero player */
+.hero-player{position:relative}
+.player-frame{
+  position:relative;width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;
+  background:#040d14;border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 26px 60px rgba(0,0,0,.5), 0 0 0 6px rgba(255,255,255,.045);
+}
+.player-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.player-facade{
+  position:absolute;inset:0;width:100%;border:0;padding:1rem;cursor:pointer;color:#fff;
+  display:grid;place-items:center;text-align:center;
+  background:
+    radial-gradient(95% 95% at 50% 42%, rgba(17,48,72,.55), rgba(4,13,20,.95)),
+    repeating-linear-gradient(48deg, rgba(255,255,255,.035) 0 12px, transparent 12px 24px);
+}
+.play-big{
+  width:76px;height:76px;border-radius:50%;display:grid;place-items:center;margin:0 auto .7rem;
+  background:linear-gradient(135deg,#e53935,#b71c1c);
+  box-shadow:0 16px 38px rgba(198,40,40,.5);
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.play-big svg{width:30px;height:30px;margin-left:3px}
+.player-facade:hover .play-big{transform:scale(1.09);box-shadow:0 20px 46px rgba(198,40,40,.62)}
+.pf-title{display:block;font-family:var(--serif);font-weight:700;font-size:clamp(.95rem,2.6vw,1.1rem);color:#fff}
+.pf-sub{display:block;font-size:.76rem;color:#a9c4d4;margin-top:.28rem}
+.player-caption{
+  display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;
+  margin-top:11px;font-size:.78rem;color:#9dbbcd;
+}
+.player-caption strong{color:#e8f2f9}
+.hero-portrait{
+  position:absolute;right:-6px;bottom:-2px;width:96px;height:auto;z-index:2;
+  filter:drop-shadow(0 10px 20px rgba(0,0,0,.45));
+}
+
+/* quick module chips in hero */
+.hero-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.hero-chips a{
+  display:inline-flex;align-items:center;gap:6px;padding:.34rem .62rem;border-radius:9px;
+  font-size:.75rem;font-weight:700;color:#dcecf5;text-decoration:none;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);
+  transition:all .18s ease;
+}
+.hero-chips a:hover{background:rgba(111,240,227,.18);border-color:rgba(111,240,227,.45);color:#fff;text-decoration:none}
+.hero-chips b{color:#6ff0e3;font-weight:800}
+
+/* ============================================================
+   6. SECTION SHELL
+   ============================================================ */
+section{padding:clamp(40px,5.5vw,70px) 0;scroll-margin-top:calc(var(--nav-h) + 8px)}
+.section-head{max-width:72ch;margin-bottom:clamp(20px,3vw,30px)}
+.section-head .kicker{
+  font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal-strong);margin:0 0 .45rem;display:block;
+}
+.section-head h2{margin-bottom:.4rem}
+.section-head p{color:var(--muted);font-size:.95rem;margin:0}
+.panel{
+  min-width:0;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:clamp(1rem,2.6vw,1.5rem);box-shadow:var(--shadow-sm);
+}
+.grid{display:grid;gap:13px;min-width:0}
+.grid > *{min-width:0}
+.grid-2{grid-template-columns:1fr}
+.grid-3{grid-template-columns:1fr}
+@media(min-width:620px){.grid-2,.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:960px){.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* value cards */
+.value-card{
+  display:flex;flex-direction:column;gap:.5rem;height:100%;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:1.05rem 1.1rem;box-shadow:var(--shadow-sm);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.value-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:color-mix(in srgb,var(--teal) 45%, var(--line))}
+.value-card .vc-icon{
+  width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+  background:linear-gradient(145deg,var(--teal-soft),color-mix(in srgb,var(--teal) 18%, transparent));
+  color:var(--teal-strong);border:1px solid color-mix(in srgb,var(--teal) 26%, transparent);
+}
+.value-card .vc-icon svg{width:19px;height:19px}
+.value-card h3{margin:0;font-size:.99rem}
+.value-card p{margin:0;font-size:.855rem;color:var(--muted);line-height:1.55}
+
+/* ============================================================
+   7. LECTURE SERIES
+   ============================================================ */
+.course-card{
+  display:grid;gap:1rem;padding:clamp(.9rem,2.4vw,1.35rem);
+  background:linear-gradient(135deg,var(--surface),var(--surface-2));
+  border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-sm);
+  margin-bottom:16px;
+}
+.course-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:0}
+@media(min-width:760px){.course-facts{grid-template-columns:repeat(4,1fr)}}
+.fact{background:var(--surface);padding:.62rem .8rem}
+.fact dt{font-size:.66rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.12rem}
+.fact dd{margin:0;font-size:.88rem;font-weight:700;color:var(--ink);line-height:1.3}
+
+/* big featured player inside series section */
+.player-lg{max-width:620px;margin-inline:auto;width:100%}
+.player-lg .player-frame{border-color:var(--line);box-shadow:var(--shadow-md)}
+.player-lg .player-facade{background:radial-gradient(95% 95% at 50% 42%, rgba(17,48,72,.62), rgba(4,13,20,.95)),repeating-linear-gradient(48deg, rgba(255,255,255,.03) 0 12px, transparent 12px 24px)}
+
+.lecture-toolbar{
+  display:flex;flex-wrap:wrap;gap:10px;align-items:center;
+  padding:.65rem .7rem;border:1px solid var(--line);border-radius:var(--radius);
+  background:var(--surface);box-shadow:var(--shadow-sm);margin-bottom:14px;
+}
+.search-wrap{position:relative;flex:1 1 250px;min-width:0}
+.search-wrap svg{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);width:17px;height:17px;color:var(--muted);pointer-events:none}
+.search-wrap input{padding-left:2.1rem}
+input[type="search"],select,input[type="number"]{
+  font-family:var(--sans);font-size:.88rem;color:var(--ink);width:100%;
+  background:var(--surface-2);border:1px solid var(--line);border-radius:10px;
+  padding:.5rem .6rem;min-height:40px;
+}
+input[type="search"]:focus,select:focus,input[type="number"]:focus{border-color:var(--teal);outline:none;box-shadow:0 0 0 3px var(--teal-soft)}
+.search-wrap input[type="search"]{padding-left:2.1rem}
+.overall-progress{flex:1 1 210px;min-width:170px}
+.op-row{display:flex;justify-content:space-between;gap:8px;font-size:.73rem;font-weight:800;color:var(--muted);margin-bottom:.3rem}
+.bar{display:block;height:8px;border-radius:99px;background:var(--bg-soft);overflow:hidden;border:1px solid var(--line)}
+html[data-theme="dark"] .bar{background:#0a1a26}
+.bar > i{display:block;height:100%;width:0;border-radius:99px;background:linear-gradient(90deg,var(--teal-strong),var(--teal));transition:width .45s ease}
+
+.accordion{display:grid;gap:10px}
+.acc-item{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);overflow:hidden;transition:border-color .2s ease}
+.acc-item[open]{border-color:color-mix(in srgb,var(--teal) 40%, var(--line))}
+.acc-head{
+  display:flex;align-items:center;gap:12px;width:100%;text-align:left;
+  padding:.85rem .95rem;background:transparent;border:0;cursor:pointer;font-family:var(--sans);color:inherit;
+}
+.acc-head:hover{background:var(--teal-soft)}
+.acc-num{
+  width:40px;height:40px;border-radius:12px;flex:none;display:grid;place-items:center;
+  font-family:var(--serif);font-weight:900;font-size:.95rem;color:#fff;
+  background:linear-gradient(145deg,var(--navy-deep),#1d4a68);
+}
+.acc-title{flex:1;min-width:0}
+.acc-title strong{display:block;font-family:var(--serif);font-size:.96rem;color:var(--ink);line-height:1.35}
+.acc-sub{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:.32rem;font-size:.74rem;color:var(--muted)}
+.chip{
+  display:inline-flex;align-items:center;gap:5px;padding:.15rem .48rem;border-radius:6px;
+  font-size:.69rem;font-weight:800;letter-spacing:.02em;
+  background:var(--bg-soft);border:1px solid var(--line);color:var(--ink-soft);
+}
+html[data-theme="dark"] .chip{background:#0c1e2b}
+.chip.co{background:var(--teal-soft);border-color:color-mix(in srgb,var(--teal) 32%, transparent);color:var(--teal-strong)}
+.acc-head .caret{width:18px;height:18px;color:var(--muted);transition:transform .25s ease}
+.acc-item[open] .caret{transform:rotate(180deg)}
+.acc-body{padding:0 .95rem .95rem}
+.acc-progress{display:flex;align-items:center;gap:10px;margin:.1rem 0 .8rem;font-size:.75rem;font-weight:800;color:var(--muted)}
+.acc-progress .bar{flex:1}
+
+.lec-list{display:grid;gap:8px;list-style:none;padding:0;margin:0}
+@media(min-width:760px){.lec-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.lec-card{
+  display:flex;flex-direction:column;min-width:0;position:relative;
+  border:1px solid var(--line);border-radius:12px;background:var(--surface-2);
+  transition:border-color .18s ease,box-shadow .18s ease,transform .18s ease,background-color .18s ease;
+}
+.lec-card:hover{border-color:color-mix(in srgb,var(--teal) 48%, var(--line));box-shadow:var(--shadow-sm);transform:translateY(-2px);background:var(--surface)}
+.lec-card.disabled{opacity:.92}
+.lec-card.disabled:hover{transform:none;box-shadow:none;border-color:var(--line);background:var(--surface-2)}
+.lec-link{display:grid;grid-template-columns:auto 1fr;gap:.65rem;align-items:start;padding:.7rem .78rem .45rem;text-decoration:none;color:inherit}
+.lec-link:hover{text-decoration:none;color:inherit}
+a.lec-link::after{content:"";position:absolute;inset:0;z-index:1;border-radius:12px}
+a.lec-link:focus-visible{outline:none}
+.lec-card:focus-within{border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-soft)}
+.lec-link.is-disabled{cursor:default}
+.lec-body{min-width:0;display:block}
+.lec-play{
+  width:36px;height:36px;border-radius:10px;display:grid;place-items:center;flex:none;
+  background:rgba(198,40,40,.10);color:#c62828;border:1px solid rgba(198,40,40,.22);
+  transition:transform .18s ease,background-color .18s ease;
+}
+.lec-card:hover .lec-play{transform:scale(1.06);background:rgba(198,40,40,.17)}
+html[data-theme="dark"] .lec-play{background:rgba(255,86,72,.14);color:#ff6b5e;border-color:rgba(255,86,72,.28)}
+.lec-play svg{width:17px;height:17px}
+.lec-code{display:block;font-size:.67rem;font-weight:800;letter-spacing:.09em;color:var(--teal-strong);text-transform:uppercase;line-height:1.3}
+.lec-topic{display:block;font-size:.87rem;font-weight:600;color:var(--ink);line-height:1.4;margin:.1rem 0 .42rem}
+.watch-link{
+  display:inline-flex;align-items:center;gap:5px;font-size:.71rem;font-weight:800;
+  color:#c62828;background:rgba(198,40,40,.08);border:1px solid rgba(198,40,40,.22);
+  padding:.22rem .5rem;border-radius:7px;transition:background-color .18s ease;
+}
+html[data-theme="dark"] .watch-link{color:#ff6b5e;background:rgba(255,86,72,.12);border-color:rgba(255,86,72,.26)}
+.lec-card:hover .watch-link{background:rgba(198,40,40,.16)}
+.watch-link svg{width:11px;height:11px}
+.lec-foot{
+  position:relative;z-index:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;
+  margin-top:auto;padding:.38rem .78rem .55rem;border-top:1px dashed var(--line);
+}
+.watched{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;color:var(--muted);cursor:pointer;user-select:none}
+.watched input,.mod-check input{
+  appearance:none;-webkit-appearance:none;width:17px;height:17px;flex:none;margin:0;padding:0;min-height:0;
+  border:1.6px solid var(--muted);border-radius:5px;background:var(--surface);cursor:pointer;position:relative;transition:all .15s ease;
+}
+.watched input:checked,.mod-check input:checked{background:var(--teal);border-color:var(--teal)}
+.watched input:checked::after,.mod-check input:checked::after{
+  content:"";position:absolute;left:5px;top:1.5px;width:5px;height:9px;
+  border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg);
+}
+.lec-card.watched-state .lec-topic{color:var(--muted);text-decoration:line-through;text-decoration-thickness:1px}
+.badge-soon{
+  display:inline-block;font-size:.67rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;
+  padding:.17rem .46rem;border-radius:5px;background:rgba(179,132,47,.16);color:#8a6522;border:1px solid rgba(179,132,47,.3);
+}
+html[data-theme="dark"] .badge-soon{color:#d9b269}
+.note-inline{
+  display:flex;gap:.6rem;align-items:flex-start;margin-top:13px;
+  font-size:.83rem;color:var(--muted);background:var(--surface);border:1px dashed var(--line);
+  border-radius:12px;padding:.72rem .88rem;
+}
+.note-inline svg{width:16px;height:16px;color:var(--teal-strong);margin-top:2px}
+.no-results{display:none;padding:1rem;text-align:center;color:var(--muted);font-size:.88rem;border:1px dashed var(--line);border-radius:12px;margin-top:10px}
+.no-results.show{display:block}
+
+/* ============================================================
+   8. PLANNER
+   ============================================================ */
+.planner-grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr)}
+@media(min-width:960px){.planner-grid{grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:start}}
+.planner-grid > *,.results,.results > *{min-width:0;max-width:100%}
+.form-grid{display:grid;gap:12px}
+@media(min-width:520px){.form-grid{grid-template-columns:1fr 1fr}}
+.field{display:flex;flex-direction:column;gap:.25rem;min-width:0}
+.field label{font-size:.71rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.mod-checks{display:grid;gap:8px;margin-top:.2rem}
+@media(min-width:520px){.mod-checks{grid-template-columns:1fr 1fr}}
+.mod-check{
+  display:flex;gap:8px;align-items:flex-start;padding:.55rem .62rem;
+  border:1px solid var(--line);border-radius:10px;background:var(--surface-2);
+  font-size:.81rem;font-weight:600;color:var(--ink);cursor:pointer;line-height:1.35;
+}
+.mod-check:hover{border-color:color-mix(in srgb,var(--teal) 45%, var(--line))}
+.mod-check input{margin-top:2px}
+.results{display:grid;gap:12px}
+.kpi-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:0}
+.kpi{padding:.75rem .85rem;border-radius:12px;background:var(--surface-2);border:1px solid var(--line)}
+.kpi dt{font-size:.66rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:.18rem}
+.kpi dd{margin:0;font-family:var(--serif);font-weight:900;font-size:1.28rem;color:var(--ink);line-height:1.1}
+.kpi dd small{font-family:var(--sans);font-weight:700;font-size:.7rem;color:var(--muted)}
+.alert{display:flex;gap:.6rem;align-items:flex-start;padding:.75rem .85rem;border-radius:12px;font-size:.84rem;line-height:1.5}
+.alert svg{width:17px;height:17px;margin-top:2px;flex:none}
+.alert-warn{background:rgba(196,120,20,.10);border:1px solid rgba(196,120,20,.32);color:#8a5a0f}
+html[data-theme="dark"] .alert-warn{background:rgba(240,170,60,.12);border-color:rgba(240,170,60,.3);color:#f0c078}
+.alert-ok{background:var(--teal-soft);border:1px solid color-mix(in srgb,var(--teal) 34%, transparent);color:var(--teal-strong)}
+.plan-scroll{max-height:330px;overflow:auto;overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+.plan-table{width:100%;border-collapse:collapse;font-size:.83rem}
+.plan-table th,.plan-table td{padding:.46rem .52rem;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.plan-table th{font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--surface-2);position:sticky;top:0;z-index:1}
+.plan-table tbody tr:hover{background:var(--teal-soft)}
+.plan-table .d-day{font-weight:800;color:var(--teal-strong);white-space:nowrap}
+.plan-table td:nth-child(2){color:var(--ink)}
+/* per-table column sizing — the module table and schedule table differ */
+@media(min-width:560px){
+  .plan-table.mods th:nth-child(2),.plan-table.mods td:nth-child(2){width:64px;white-space:nowrap}
+  .plan-table.mods th:nth-child(3),.plan-table.mods td:nth-child(3){width:112px;white-space:nowrap}
+  .plan-table.sched th:nth-child(1),.plan-table.sched td:nth-child(1){width:88px;white-space:nowrap}
+  .plan-table.sched th:nth-child(2),.plan-table.sched td:nth-child(2){width:34%}
+}
+.subhead{display:flex;align-items:center;gap:.5rem;font-family:var(--sans);font-size:.73rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 .55rem}
+.subhead svg{width:15px;height:15px;color:var(--teal-strong)}
+.step-list{list-style:none;padding:0;margin:0;display:grid;gap:9px;counter-reset:s}
+@media(min-width:760px){.step-list{grid-template-columns:1fr 1fr}}
+.step-list li{
+  counter-increment:s;position:relative;margin:0;padding:.72rem .8rem .72rem 2.5rem;
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;font-size:.855rem;color:var(--ink-soft);
+}
+.step-list li::before{
+  content:counter(s);position:absolute;left:.7rem;top:.7rem;width:23px;height:23px;border-radius:7px;
+  display:grid;place-items:center;background:var(--teal-soft);color:var(--teal-strong);
+  font-family:var(--serif);font-weight:900;font-size:.8rem;border:1px solid color-mix(in srgb,var(--teal) 30%, transparent);
+}
+.step-list strong{color:var(--ink)}
+.checklist{list-style:none;padding:0;margin:0;display:grid;gap:8px}
+.checklist li{display:grid;grid-template-columns:auto 1fr;gap:.55rem;align-items:start;margin:0;padding:.68rem .78rem;background:var(--surface);border:1px solid var(--line);border-radius:11px;font-size:.855rem}
+.checklist .tick{
+  width:21px;height:21px;border-radius:6px;display:grid;place-items:center;flex:none;
+  background:var(--teal-soft);color:var(--teal-strong);border:1px solid color-mix(in srgb,var(--teal) 30%, transparent);
+}
+.checklist .tick svg{width:12px;height:12px}
+.tips-grid{display:grid;gap:13px}
+@media(min-width:820px){.tips-grid{grid-template-columns:1fr 1fr}}
+.disclaimer{font-size:.81rem;line-height:1.65;color:var(--muted);background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:12px;padding:.85rem .95rem}
+.disclaimer strong{color:var(--ink)}
+
+/* ============================================================
+   9. INSTRUCTOR / RESOURCES / FAQ / CTA
+   ============================================================ */
+.instructor{display:grid;gap:clamp(16px,3vw,30px);align-items:center}
+@media(min-width:840px){.instructor{grid-template-columns:auto minmax(0,1fr)}}
+.instructor-photo{
+  position:relative;justify-self:center;width:min(220px,52vw);
+  border-radius:22px;padding:10px;
+  background:linear-gradient(160deg,var(--teal-soft),color-mix(in srgb,var(--teal) 22%, transparent));
+  border:1px solid color-mix(in srgb,var(--teal) 26%, transparent);
+}
+.instructor-photo img{position:relative;z-index:1;width:100%;height:auto;filter:drop-shadow(0 12px 22px rgba(12,28,44,.24))}
+.instructor h3{font-size:1.25rem;margin-bottom:.2rem}
+.instructor .role{font-size:.85rem;font-weight:700;color:var(--teal-strong);margin:0 0 .6rem}
+.instructor p{font-size:.9rem;color:var(--muted);margin-bottom:.8rem}
+.link-row{display:flex;flex-wrap:wrap;gap:7px}
+.link-pill{
+  display:inline-flex;align-items:center;gap:6px;padding:.4rem .72rem;border-radius:9px;
+  font-size:.79rem;font-weight:700;color:var(--ink);background:var(--surface);
+  border:1px solid var(--line);box-shadow:var(--shadow-sm);transition:all .18s ease;
+}
+.link-pill:hover{border-color:var(--teal);color:var(--teal-strong);transform:translateY(-1px);text-decoration:none}
+.link-pill svg{width:14px;height:14px;color:var(--teal-strong)}
+
+.res-card{
+  display:flex;flex-direction:column;gap:.4rem;height:100%;padding:1rem 1.05rem;text-decoration:none;
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow-sm);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.res-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md);border-color:color-mix(in srgb,var(--teal) 50%, var(--line));text-decoration:none}
+.res-card .rc-icon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--teal-soft);color:var(--teal-strong);border:1px solid color-mix(in srgb,var(--teal) 26%, transparent)}
+.res-card .rc-icon svg{width:19px;height:19px}
+.res-card .rc-name{font-family:var(--serif);font-weight:700;color:var(--ink);font-size:.96rem}
+.res-card .rc-meta{font-size:.81rem;color:var(--muted);line-height:1.45}
+.res-card .rc-go{margin-top:auto;padding-top:.45rem;font-size:.78rem;font-weight:800;color:var(--teal-strong);display:inline-flex;align-items:center;gap:5px}
+.res-card .rc-go svg{width:13px;height:13px;transition:transform .2s ease}
+.res-card:hover .rc-go svg{transform:translate(2px,-2px)}
+
+.faq{display:grid;gap:9px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow-sm);overflow:hidden}
+.faq summary{
+  display:flex;align-items:center;gap:10px;padding:.8rem .95rem;cursor:pointer;list-style:none;
+  font-family:var(--serif);font-weight:700;font-size:.92rem;color:var(--ink);
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";margin-left:auto;font-family:var(--sans);font-size:1.15rem;font-weight:700;color:var(--teal-strong);line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq summary:hover{background:var(--teal-soft)}
+.faq .faq-body{padding:0 .95rem .85rem;font-size:.87rem;color:var(--muted)}
+
+.cta-band{
+  color:#e8f2f9;border-radius:var(--radius-lg);padding:clamp(1.2rem,3vw,2rem);
+  background:linear-gradient(140deg,#081826,#0d2740 55%,#0a3c3c);
+  border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow-lg);
+  display:grid;gap:1rem;
+}
+@media(min-width:760px){.cta-band{grid-template-columns:minmax(0,1fr) auto;align-items:center}}
+.cta-band h2{color:#fff;margin-bottom:.35rem}
+.cta-band p{color:#b3cddd;font-size:.9rem;margin:0}
+.cta-band .btn-row{justify-content:flex-start}
+
+/* ============================================================
+   10. SITE FOOTER
+   ============================================================ */
+.site-footer{background:linear-gradient(160deg,var(--navy-deep),#0b2333 60%,#08302f);color:#c3d6e3;padding:clamp(30px,5vw,46px) 0 20px}
+html[data-theme="dark"] .site-footer{background:linear-gradient(160deg,#040c14,#07161f 60%,#052322)}
+.footer-grid{display:grid;gap:20px}
+@media(min-width:760px){.footer-grid{grid-template-columns:1.5fr 1fr 1fr}}
+.site-footer h3{color:#fff;font-size:.93rem;margin-bottom:.65rem}
+.site-footer a{color:#a9cbdd;text-decoration:none;font-size:.86rem}
+.site-footer a:hover{color:#fff;text-decoration:underline}
+.site-footer ul{list-style:none;padding:0;margin:0;display:grid;gap:.38rem}
+.site-footer p{font-size:.86rem;color:#a9cbdd;line-height:1.6}
+.footer-bottom{
+  margin-top:22px;padding-top:14px;border-top:1px solid rgba(255,255,255,.13);
+  display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between;
+  font-size:.79rem;color:#95b2c6;
+}
+.to-top{display:inline-flex;align-items:center;gap:6px;padding:.4rem .72rem;border-radius:9px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#e6f1f8;font-size:.79rem;font-weight:700}
+.to-top:hover{background:rgba(255,255,255,.16);text-decoration:none}
+
+/* sticky mobile CTA */
+.mobile-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;display:flex;gap:8px;
+  padding:.6rem clamp(12px,4vw,18px) calc(.6rem + env(safe-area-inset-bottom));
+  background:color-mix(in srgb,var(--surface) 94%, transparent);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(12,28,44,.12);
+}
+.mobile-cta .btn{flex:1;padding:.72rem .6rem;font-size:.85rem}
+@media(min-width:1010px){.mobile-cta{display:none}}
+@media(max-width:1009px){body{padding-bottom:74px}}
+
+@media print{
+  .site-header,.mobile-nav,.mobile-cta,.to-top,.player-facade,.icon-btn{display:none !important}
+  body{background:#fff;color:#000;padding-bottom:0}
+  section{padding:12px 0;break-inside:avoid}
+  .hero{background:#fff;color:#000}
+  .hero h1,.hero h1 .hl{color:#000;-webkit-text-fill-color:#000}
+  .card,.panel,.acc-item,.lec-card{box-shadow:none}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+<!-- ============================================================
+     HEADER — EDIT: brand text / nav labels
+     ============================================================ -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#hero">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10.5" width="16" height="10" rx="2.5"/><path d="M8 10.5V7a4 4 0 0 1 8 0v3.5"/><path d="M12 15v2"/></svg>
+        </span>
+        <span class="brand-text">
+          <span class="brand-name"><span class="bn-long">BCS702 · Parallel Computing</span><span class="bn-short">BCS702</span></span>
+          <span class="brand-sub">Free VTU video lectures · Scheme 2022</span>
+        </span>
+      </a>
+      <ul class="nav-list" id="navList">
+        <li><a href="#series">Lectures</a></li>
+        <li><a href="#plan">Study Plan</a></li>
+        <li><a href="#routine">Exam Guide</a></li>
+        <li><a href="#instructor">Your Teacher</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark mode" aria-pressed="false" title="Toggle dark mode">
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5M19.1 4.9l-1.5 1.5M6.4 17.6l-1.5 1.5"/></svg>
+        </button>
+        <a class="icon-btn yt-btn" href="https://www.youtube.com/@Dr.LokeshMR" target="_blank" rel="noopener noreferrer" aria-label="Watch on YouTube (opens in a new tab)" title="YouTube channel" style="text-decoration:none">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15.2V8.8L15.5 12 10 15.2Z"/></svg>
+        </a>
+        <button class="icon-btn" id="menuBtn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+  <div class="mobile-nav" id="mobileNav" hidden>
+    <div class="wrap">
+      <ul>
+        <li><a href="#series">Video Lectures (Module 1–5)</a></li>
+        <li><a href="#plan">Study Time Planner</a></li>
+        <li><a href="#routine">Exam Preparation Guide</a></li>
+        <li><a href="#instructor">Your Teacher</a></li>
+        <li><a href="#resources">Resources &amp; Community</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     1. HERO — the video is the headline.
+     EDIT: headline, sub-line, CTA labels.
+     ============================================================ -->
+<section class="hero" id="hero" aria-labelledby="hero-title">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-eyebrow"><span class="live" aria-hidden="true"></span>Free series · VTU Scheme 2022</span>
+        <h1 id="hero-title">Parallel Computing <span class="hl">BCS702</span></h1>
+        <p class="hero-sub"><strong>Complete module-wise lecture series</strong> for VTU Semester&nbsp;VII (Scheme&nbsp;2022). Introduction, GPU and hybrid systems, MPI, OpenMP and CUDA — mapped to <strong>CO1–CO5</strong>. Watch in order, write your notes, then practise previous papers.</p>
+
+        <ul class="badges hero-facts">
+          <li><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 6 6 12 6-12"/></svg>5 modules</span></li>
+          <li><span><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>41 lectures</span></li>
+          <li><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>CO1–CO5 mapped</span></li>
+          <li><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>8 hours per module</span></li>
+        </ul>
+
+        <div class="btn-row">
+          <a class="btn btn-yt btn-lg" href="#series">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            Start with Module 1
+          </a>
+          <a class="btn btn-primary btn-lg" href="https://www.youtube.com/@Dr.LokeshMR" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15.2V8.8L15.5 12 10 15.2Z"/></svg>
+            Subscribe on YouTube
+          </a>
+          <a class="btn btn-ghost btn-lg" href="#plan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+            Build my study plan
+          </a>
+        </div>
+        <p class="hero-cta-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+          No registration, no payment. Everything is free on YouTube.
+        </p>
+      </div>
+
+      <!-- ============================================================
+           FEATURED PLAYER — lazy YouTube embed (loads only on click).
+           EDIT: change data-video-id below to feature another video.
+           ============================================================ -->
+      <div class="hero-player">
+        <div class="player-frame" id="heroPlayer" data-video-id="Lh5XZpCALt4">
+          <button class="player-facade" id="heroFacade" type="button" aria-label="Play the course introduction video">
+            <span>
+              <span class="play-big" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="#fff"><path d="M9 6.5v11l9-5.5z"/></svg>
+              </span>
+              <span class="pf-title">Start with M1-L1</span>
+              <span class="pf-sub">Introduction to parallel programming</span>
+            </span>
+          </button>
+        </div>
+        <div class="player-caption">
+          <span>Featured: <strong>M1-L1 · Introduction to parallel programming</strong></span>
+          <a href="https://youtu.be/Lh5XZpCALt4" target="_blank" rel="noopener noreferrer" style="color:#7fe6dc;font-weight:700">Watch on YouTube &rarr;</a>
+        </div>
+        <nav class="hero-chips" aria-label="Jump to a module">
+          <a href="#series" data-open-module="1"><b>M1</b> Hardware &amp; software</a>
+          <a href="#series" data-open-module="2"><b>M2</b> GPU &amp; performance</a>
+          <a href="#series" data-open-module="3"><b>M3</b> MPI</a>
+          <a href="#series" data-open-module="4"><b>M4</b> OpenMP</a>
+          <a href="#series" data-open-module="5"><b>M5</b> CUDA</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     2. WHY THIS SERIES (short — 4 value cards)
+     ============================================================ -->
+<section id="why" aria-labelledby="why-title" style="padding-top:clamp(32px,4.5vw,52px)">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Why students use it</span>
+      <h2 id="why-title">Built for the VTU exam, not for a textbook shelf</h2>
+      <p>Every lecture follows the syllabus order, and each one ends where the next begins — so a missed class is never a lost module.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <div class="value-card">
+        <span class="vc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h6v14H4zM14 6h6v14h-6z"/><path d="M4 6V4h6v2M14 6V4h6v2"/></svg>
+        </span>
+        <h3>Module-wise, in session order</h3>
+        <p>Five modules of eight lectures each — M1-L1 to M5-L8 (Module 4 has nine, with one topic split into two parts). Pick your module and follow the sequence; no hunting through a playlist.</p>
+      </div>
+      <div class="value-card">
+        <span class="vc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 8.5l10 5.5 10-5.5z"/><path d="M6 11.2V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.8"/></svg>
+        </span>
+        <h3>Mapped to CO1–CO5</h3>
+        <p>Each module shows the course outcome it covers, so you can see exactly what an IA or SEE question on that module is testing.</p>
+      </div>
+      <div class="value-card">
+        <span class="vc-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 11h18"/><path d="m9 15 2 2 4-4"/></svg>
+        </span>
+        <h3>A plan for your exam date</h3>
+        <p>Enter days left and hours per day — the planner splits your time across watch, notes and practice, and warns you if it will not fit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     3. LECTURE SERIES — data lives in MODULES in the script
+     ============================================================ -->
+<section id="series" aria-labelledby="series-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">The series</span>
+      <h2 id="series-title">All 41 lectures, module by module</h2>
+      <p>Search by topic, tick lectures as you finish them, and watch progress per module.</p>
+    </div>
+
+    <div class="course-card">
+      <dl class="course-facts">
+        <div class="fact"><dt>Course</dt><dd>Parallel Computing</dd></div>
+        <div class="fact"><dt>Course code</dt><dd>BCS702</dd></div>
+        <div class="fact"><dt>Semester</dt><dd>VII · Scheme 2022</dd></div>
+        <div class="fact"><dt>Credits</dt><dd>03</dd></div>
+      </dl>
+
+      <!-- Featured player #2 (same lazy pattern). EDIT: data-video-id -->
+      <div class="player-lg">
+        <div class="player-frame" id="seriesPlayer" data-video-id="Lh5XZpCALt4">
+          <button class="player-facade" id="seriesFacade" type="button" aria-label="Play the featured course video">
+            <span>
+              <span class="play-big" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="#fff"><path d="M9 6.5v11l9-5.5z"/></svg>
+              </span>
+              <span class="pf-title">M1-L1 · Introduction to parallel programming</span>
+              <span class="pf-sub">Click to play · loads only when you need it</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="lecture-toolbar">
+      <div class="search-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>
+        <label class="skip" for="lecSearch">Search lectures by topic</label>
+        <input type="search" id="lecSearch" placeholder="Search a topic — MPI, OpenMP, CUDA, Amdahl…" autocomplete="off" />
+      </div>
+      <div class="overall-progress">
+        <div class="op-row"><span>Your progress</span><span id="overallText">0 / 41 watched</span></div>
+        <div class="bar" role="progressbar" aria-labelledby="overallText" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="overallBarWrap"><i id="overallBar"></i></div>
+      </div>
+      <button class="btn btn-ghost btn-sm" type="button" id="expandAll">Expand all modules</button>
+    </div>
+
+    <div class="accordion" id="moduleAccordion"></div>
+    <div class="no-results" id="lecNoResults">No lectures match your search. Try a different keyword.</div>
+
+    <div class="note-inline">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11 12h1v5h1"/></svg>
+      <span>New lectures are added as they are published — a lecture with no video yet is marked <em>Coming soon</em>. Watched progress is kept in this browser tab only and resets when you reload.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     4. STUDY TIME PLANNER — numbers in PLANNER config
+     ============================================================ -->
+<section id="plan" aria-labelledby="plan-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Plan it</span>
+      <h2 id="plan-title">Study Time Planner</h2>
+      <p>Tell it how many days you have and how long you can study each day. It budgets watching, notes and practice for the modules you pick.</p>
+    </div>
+
+    <div class="planner-grid" style="margin-bottom:18px">
+      <div class="panel">
+        <form id="plannerForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label for="daysLeft">Days left until exam</label>
+              <input type="number" id="daysLeft" min="1" max="365" value="14" inputmode="numeric" />
+            </div>
+            <div class="field">
+              <label for="hoursPerDay">Study hours per day</label>
+              <input type="number" id="hoursPerDay" min="0.5" max="16" step="0.5" value="3" inputmode="decimal" />
+            </div>
+          </div>
+          <fieldset style="border:0;padding:0;margin:1rem 0 0">
+            <legend class="small" style="font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:0;margin-bottom:.5rem">Modules to include</legend>
+            <div class="mod-checks" id="planModules"></div>
+          </fieldset>
+          <div class="btn-row" style="margin-top:1rem">
+            <button class="btn btn-primary btn-sm" type="submit">Build my plan</button>
+            <button class="btn btn-ghost btn-sm" type="button" id="planReset">Reset</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="panel" aria-live="polite">
+        <h3 style="margin-bottom:.3rem">Your plan</h3>
+        <p class="small muted" style="margin-bottom:1rem" id="planSummary">Choose your options and select “Build my plan”.</p>
+        <div class="results" id="planResults" hidden>
+          <dl class="kpi-row">
+            <div class="kpi"><dt>Hours available</dt><dd id="kpiAvailable">—</dd></div>
+            <div class="kpi"><dt>Recommended</dt><dd id="kpiRecommended">—</dd></div>
+            <div class="kpi"><dt>Per day</dt><dd id="kpiPerDay">—</dd></div>
+            <div class="kpi"><dt>Days of work</dt><dd id="kpiDays">—</dd></div>
+          </dl>
+          <div id="planAlert"></div>
+          <div>
+            <div class="subhead">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h6v14H4zM14 6h6v14h-6z"/><path d="M4 6V4h6v2M14 6V4h6v2"/></svg>
+              Recommended hours per module
+            </div>
+            <div class="plan-scroll">
+              <table class="plan-table mods">
+                <thead><tr><th scope="col">Module</th><th scope="col">Base</th><th scope="col">Recommended</th></tr></thead>
+                <tbody id="planModuleTable"></tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <div class="subhead">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M8 3v4M16 3v4M3 11h18"/></svg>
+              Day-by-day schedule
+            </div>
+            <div class="plan-scroll">
+              <table class="plan-table sched">
+                <thead><tr><th scope="col">Day</th><th scope="col">Focus</th><th scope="col">Step</th></tr></thead>
+                <tbody id="planSchedule"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     5. EXAM GUIDE / ROUTINE
+     Do NOT add VTU rules or numbers — use [Add official VTU rule].
+     ============================================================ -->
+<section id="routine" aria-labelledby="routine-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Exam prep</span>
+      <h2 id="routine-title">How to actually prepare for the exam</h2>
+      <p>The 4-step loop that works for every module — the planner already budgets 1× watching, 1× notes and 1× practice for you.</p>
+    </div>
+
+    <div class="panel" style="margin-bottom:14px">
+      <div class="subhead">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        The 4-step routine
+      </div>
+      <ol class="step-list">
+        <li><strong>Watch in order.</strong> Follow M1-L1 → M5-L8. Pause and rewind on the derivations that carry marks: speedup and efficiency, Amdahl’s law, MPI collectives and the CUDA trapezoidal rule.</li>
+        <li><strong>Write short notes.</strong> One page per lecture: definition, algorithm or pseudocode, one worked example, and where it is used.</li>
+        <li><strong>Solve tutorial problems + previous papers.</strong> Attempt first, check the solution after — module by module.</li>
+        <li><strong>Revise with a one-page summary and quiz.</strong> Re-derive the key formulas and directives from memory, then self-test.</li>
+      </ol>
+    </div>
+
+    <div class="tips-grid" style="margin-bottom:14px">
+      <div class="panel">
+        <div class="subhead">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9V16h7v-2.1A6 6 0 0 0 12 3Z"/></svg>
+          How to use these videos
+        </div>
+        <ul class="small" style="padding-left:1.1rem;margin-bottom:0">
+          <li>Pick a module from the index and watch the lectures in session order.</li>
+          <li>Run the programs yourself — MPI, OpenMP and CUDA examples are meant to be typed out, compiled and timed, not just watched.</li>
+          <li>Check the CO (CO1–CO5) mapped to each module to focus your exam preparation.</li>
+          <li>Revisit the module revision session before each IA test and the SEE.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <div class="subhead">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 9v5M12 17h.01"/></svg>
+          Tips to avoid failing
+        </div>
+        <ul class="checklist small">
+          <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Maintain attendance and internal marks (CIE) requirements — <span class="ph">[Add official VTU rule]</span></span></li>
+          <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Check the official VTU syllabus and circulars — <span class="ph">[Add link to official VTU circulars]</span></span></li>
+          <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Practise 5 to 10 years of previous question papers, module by module.</span></li>
+          <li><span class="tick" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span>Ask doubts in the YouTube comments — your question helps others too.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="panel" style="margin-bottom:14px">
+      <div class="subhead">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+        Final-week revision plan
+      </div>
+      <div class="plan-scroll" style="max-height:none">
+        <table class="plan-table">
+          <thead><tr><th scope="col">When</th><th scope="col">What to do</th></tr></thead>
+          <tbody>
+            <tr><td class="d-day">7–5 days out</td><td>Re-watch one module per day at 1.5× speed, focusing only on topics you flagged in your notes. Re-derive one formula or directive set per module by hand.</td></tr>
+            <tr><td class="d-day">4–3 days out</td><td>Full-length previous question paper under timed conditions. Tag every question by module and CO, then list your weak modules.</td></tr>
+            <tr><td class="d-day">2 days out</td><td>Only weak modules: lecture → notes → tutorial problems. Cross-check with your one-page summaries.</td></tr>
+            <tr><td class="d-day">1 day out</td><td>Read summaries only. No new topics. Skim the speedup and efficiency formulas, MPI/OpenMP directives and the block diagrams.</td></tr>
+            <tr><td class="d-day">Exam day</td><td>Skim your one-page summaries for 20–30 minutes. Answer the questions you know best first.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="disclaimer">
+      <strong>Disclaimer:</strong> These materials are for educational use and follow the VTU Scheme 2022 BCS702 syllabus. These are study suggestions only; results depend on your own effort. Always refer to the official VTU syllabus and your instructor’s guidance for the latest updates, and follow official VTU rules for eligibility, attendance, and exams.
+    </p>
+  </div>
+</section>
+
+<!-- ============================================================
+     6. INSTRUCTOR — deliberately short lean profile
+     EDIT: role / institution placeholders
+     ============================================================ -->
+<section id="instructor" aria-labelledby="instructor-title">
+  <div class="wrap">
+    <div class="panel">
+      <div class="instructor">
+        <div class="instructor-photo">
+          <!-- PROFILE PHOTO: place "dr_lokesh_professor_new.png" in the SAME folder as this file -->
+          <img src="./dr_lokesh_professor_new.png" alt="Dr. Lokesh M R" width="374" height="481" loading="lazy" decoding="async" />
+        </div>
+        <div>
+          <span class="kicker" style="font-size:.72rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-strong);display:block;margin-bottom:.35rem">Your teacher</span>
+          <h3 id="instructor-title" style="font-family:var(--serif);font-size:1.35rem;color:var(--ink);margin-bottom:.15rem">Dr. Lokesh M R</h3>
+          <p class="role">Teaching Parallel Computing · <span class="ph">[Add institution]</span></p>
+          <p>Academician and researcher. These lectures exist so that no VTU student has to skip a module because the class moved too fast — the full BCS702 syllabus is explained step by step, in order, for free.</p>
+          <div class="link-row">
+            <a class="link-pill" href="https://www.youtube.com/@Dr.LokeshMR" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15.2V8.8L15.5 12 10 15.2Z"/></svg>
+              YouTube
+            </a>
+            <a class="link-pill" href="https://www.linkedin.com/in/lokesh-m-r-b6880b169/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a class="link-pill" href="https://github.com/lokeshmr23" target="_blank" rel="noopener noreferrer">GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     7. RESOURCES & COMMUNITY
+     ============================================================ -->
+<section id="resources" aria-labelledby="resources-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Keep going</span>
+      <h2 id="resources-title">Resources &amp; community</h2>
+      <p>Notes, updates and reminders between lectures — plus the channel and communities where new lectures are announced.</p>
+    </div>
+
+    <div class="grid grid-3">
+      <a class="res-card" href="https://www.youtube.com/@Dr.LokeshMR" target="_blank" rel="noopener noreferrer">
+        <span class="rc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.2 5 12 5 12 5s-6.2 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26 26 0 0 0 2 12a26 26 0 0 0 .4 4.8 2.5 2.5 0 0 0 1.8 1.8C5.8 19 12 19 12 19s6.2 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8A26 26 0 0 0 22 12a26 26 0 0 0-.4-4.8ZM10 15.2V8.8L15.5 12 10 15.2Z"/></svg></span>
+        <span class="rc-name">YouTube channel</span>
+        <span class="rc-meta">@Dr.LokeshMR — new lectures and revisions</span>
+        <span class="rc-go">Subscribe <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="res-card" href="https://t.me/vtucreat" target="_blank" rel="noopener noreferrer">
+        <span class="rc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 19 19.4c-.2 1-.8 1.2-1.6.8l-4.5-3.3-2.2 2.1c-.24.24-.44.44-.9.44l.33-4.6 8.4-7.6c.37-.32-.08-.5-.56-.19L7.6 13.2l-4.4-1.4c-1-.3-1-1 .2-1.4l17.2-6.6c.8-.3 1.5.2 1.3 1.5Z"/></svg></span>
+        <span class="rc-name">Telegram</span>
+        <span class="rc-meta">t.me/vtucreat — notes, updates, reminders</span>
+        <span class="rc-go">Join <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="res-card" href="https://whatsapp.com/channel/0029VbE13OS7dmeY7Rsgf12o" target="_blank" rel="noopener noreferrer">
+        <span class="rc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.4A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.5-5.8c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.6.8c-.1.2-.3.2-.5.1a6.4 6.4 0 0 1-3.2-2.8c-.1-.2 0-.4.1-.5l.5-.6c.1-.2.1-.3 0-.5l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.6c-.2 0-.5.1-.7.4-.3.3-.9 1-.9 2.2 0 1.3.9 2.6 1 2.8.1.2 1.7 2.8 4.2 3.8 2 .8 2.5.7 2.9.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.2-.2-.4-.3Z"/></svg></span>
+        <span class="rc-name">WhatsApp Channel</span>
+        <span class="rc-meta">Instant announcements before tests</span>
+        <span class="rc-go">Follow <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+      <a class="res-card" href="https://www.linkedin.com/in/lokesh-m-r-b6880b169/" target="_blank" rel="noopener noreferrer">
+        <span class="rc-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C20.6 8.75 21 11 21 14.1V21h-4v-6.1c0-1.45-.03-3.3-2-3.3-2 0-2.3 1.57-2.3 3.2V21H9Z"/></svg></span>
+        <span class="rc-name">LinkedIn</span>
+        <span class="rc-meta">lokesh-m-r — professional updates and notes</span>
+        <span class="rc-go">Connect <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+      </a>
+    </div>
+
+    <div class="note-inline" style="margin-top:14px">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg>
+      <span>Found an error or want to suggest a topic or problem? Open an Issue or submit a Pull Request on <a href="https://github.com/lokeshmr23" target="_blank" rel="noopener noreferrer">GitHub</a>. <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" style="display:inline-block;vertical-align:-2px;color:var(--gold)" aria-hidden="true"><path d="m12 3.5 2.6 5.3 5.9.9-4.3 4.2 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.7l5.9-.9z"/></svg> Star the repo and share it with your classmates!</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     8. FAQ — EDIT: add real questions students ask
+     ============================================================ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">FAQ</span>
+      <h2 id="faq-title">Before you start</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Is the series free?</summary>
+        <div class="faq-body">Yes. All lectures are free on YouTube — no registration, no payment, no course fee.</div>
+      </details>
+      <details>
+        <summary>Do I need to watch in a particular order?</summary>
+        <div class="faq-body">Follow session order inside a module (M1-L1 → M5-L8). Modules build on each other, so Module 1 first is the safest route, but each module can be revised on its own.</div>
+      </details>
+      <details>
+        <summary>Which syllabus do these lectures follow?</summary>
+        <div class="faq-body">VTU Scheme 2022, BCS702 Parallel Computing — Semester VII, 3 credits, 8 hours per module. Always cross-check with the official VTU syllabus for the latest revision.</div>
+      </details>
+      <details>
+        <summary>Are all the lectures published yet?</summary>
+        <div class="faq-body">Most of them. Any lecture whose video is not live yet shows a <em>Coming soon</em> badge instead of a link — Module 3, Lecture 7 currently has no video. New lectures are added as they are published, so check back or subscribe on YouTube.</div>
+      </details>
+      <details>
+        <summary>Are these enough for the IA tests and the SEE?</summary>
+        <div class="faq-body">They cover the module content in order. Pair them with your own notes, the tutorial programs and previous VTU question papers — the <a href="#plan">study planner</a> budgets time for all three.</div>
+      </details>
+      <details>
+        <summary>Where do I ask doubts?</summary>
+        <div class="faq-body">In the comments of that lecture on YouTube. Questions there also help other students working on the same module.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     9. FINAL CTA
+     ============================================================ -->
+<section id="start" aria-labelledby="start-title" style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2 id="start-title">Module 1, Lecture 1 is waiting</h2>
+        <p>Five modules, 41 lectures, one plan. Start today and keep the exam-eve panic out of the picture.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-yt btn-lg" href="#series">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+          Watch Module 1
+        </a>
+        <a class="btn btn-ghost btn-lg" href="https://www.youtube.com/@Dr.LokeshMR" target="_blank" rel="noopener noreferrer">Subscribe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER — EDIT: "Last updated" date + institution
+     ============================================================ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>BCS702 · Parallel Computing</h3>
+        <p>Free module-wise video lecture series for VTU Semester VII, Scheme 2022. Taught by Dr.&nbsp;Lokesh&nbsp;M&nbsp;R — academician and researcher, <span class="ph">[Add institution]</span>.</p>
+      </div>
+      <div>
+        <h3>Start here</h3>
+        <ul>
+          <li><a href="#series">All 41 lectures</a></li>
+          <li><a href="#plan">Study time planner</a></li>
+          <li><a href="#routine">Exam preparation guide</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Elsewhere</h3>
+        <ul>
+          <li><a href="https://www.youtube.com/@Dr.LokeshMR" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+          <li><a href="https://t.me/vtucreat" target="_blank" rel="noopener noreferrer">Telegram</a></li>
+          <li><a href="https://www.instagram.com/lokeshmrmysore/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.linkedin.com/in/lokesh-m-r-b6880b169/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+          <li><a href="https://github.com/lokeshmr23" target="_blank" rel="noopener noreferrer">GitHub repo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> Dr. Lokesh M R · BCS702 lecture series</span>
+      <!-- EDIT: change this date whenever you update the page -->
+      <span>Last updated: <time datetime="2026-11-10">10 November 2026</time></span>
+      <a class="to-top" href="#hero">Back to top
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<!-- sticky mobile CTA -->
+<div class="mobile-cta">
+  <a class="btn btn-yt" href="#series">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+    Start lectures
+  </a>
+  <a class="btn btn-primary" href="https://www.youtube.com/@Dr.LokeshMR" target="_blank" rel="noopener noreferrer">
+    Subscribe
+  </a>
+</div>
+<script>
+/* ============================================================================
+   HOW THIS PAGE WORKS — everything you edit lives in the configs below
+     MODULES  →  the 5 modules and all 41 lecture links (video section)
+     PLANNER  →  study-time planner numbers
+   Text you may want to change lives in the HTML (search for "[Add").
+   ========================================================================== */
+
+const MODULES = [
+ { id:1, title:"Introduction to Parallel Programming, Hardware and Software", hours:8, co:"CO1", lectures:[
+  {code:"M1-L1", topic:"Introduction to parallel programming", url:"https://youtu.be/Lh5XZpCALt4"},
+  {code:"M1-L2", topic:"Classifications of parallel computers", url:"https://youtu.be/hbrMF81GZFw"},
+  {code:"M1-L3", topic:"SIMD systems", url:"https://youtu.be/6BGfRvch4OE"},
+  {code:"M1-L4", topic:"MIMD systems", url:"https://youtu.be/LaHDXQsv9e0"},
+  {code:"M1-L5", topic:"Interconnection networks", url:"https://youtu.be/gvW3kdPKscQ"},
+  {code:"M1-L6", topic:"Cache coherence", url:"https://youtu.be/ll0MbPQuPFQ"},
+  {code:"M1-L7", topic:"Shared-memory vs distributed-memory", url:"https://youtu.be/h-a8UWif1ic"},
+  {code:"M1-L8", topic:"Parallel software", url:"https://youtu.be/z64fS3PFzdk"}
+ ]},
+ { id:2, title:"GPU Programming, Hybrid Systems and Performance", hours:8, co:"CO2", lectures:[
+  {code:"M2-L1", topic:"GPU programming", url:"https://youtu.be/Lwke3Q1PbsY"},
+  {code:"M2-L2", topic:"Programming MIMD systems and GPUs", url:"https://youtu.be/oR7ee3iao2w"},
+  {code:"M2-L3", topic:"Performance: speedup and efficiency in MIMD systems", url:"https://youtu.be/iVBrZkqsWtE"},
+  {code:"M2-L4", topic:"Amdahl\u2019s law and its implications", url:"https://youtu.be/9HMkQotYsPs"},
+  {code:"M2-L5", topic:"Scalability in MIMD systems", url:"https://youtu.be/AAv2jGmnyB4"},
+  {code:"M2-L6", topic:"Taking timings of MIMD programs", url:"https://youtu.be/HGg_xrTvu_8"},
+  {code:"M2-L7", topic:"GPU performance", url:"https://youtu.be/a21K8O0yIdM"},
+  {code:"M2-L8", topic:"Module 2 revision", url:"https://youtu.be/PgWGBIn5qgU"}
+ ]},
+ { id:3, title:"Distributed Memory Programming with MPI", hours:8, co:"CO3", lectures:[
+  {code:"M3-L1", topic:"MPI basics", url:"https://youtu.be/gcxirLYQvoo"},
+  {code:"M3-L2", topic:"Point-to-point communication", url:"https://youtu.be/E6iyXQzr_AE"},
+  {code:"M3-L3", topic:"The trapezoidal rule in MPI", url:"https://youtu.be/g6Ji06R3oqQ"},
+  {code:"M3-L4", topic:"Collective communication", url:"https://youtu.be/qNoWJtwBzz0"},
+  {code:"M3-L5", topic:"Collective communication (continued)", url:"https://youtu.be/lHBhheL10GE"},
+  {code:"M3-L6", topic:"MPI-derived datatypes", url:"https://youtu.be/7WUBwDwcKWo"},
+  {code:"M3-L7", topic:"Performance evaluation of MPI programs", url:""},
+  {code:"M3-L8", topic:"A parallel sorting algorithm", url:"https://youtu.be/M_gSzTrWSm4"}
+ ]},
+ { id:4, title:"Shared-Memory Programming with OpenMP", hours:8, co:"CO4", lectures:[
+  {code:"M4-L1", topic:"OpenMP pragmas and directives", url:"https://youtu.be/QWpfR4gqWRQ"},
+  {code:"M4-L2", topic:"The trapezoidal rule with OpenMP", url:"https://youtu.be/C3HTp3XZIUM"},
+  {code:"M4-L3", topic:"Scope of variables", url:"https://youtu.be/iGv7CJg4X8s"},
+  {code:"M4-L4", topic:"Parallel for directive", url:"https://youtu.be/2IL0SkWSz6g"},
+  {code:"M4-L5", topic:"Scheduling loops", url:"https://youtu.be/BuxqTiolEcA"},
+  {code:"M4-L6A", topic:"Producers and consumers", url:"https://youtu.be/pqg2nGsMvwY"},
+  {code:"M4-L6B", topic:"Producers and consumers", url:"https://youtu.be/MGTOmIiFJm8"},
+  {code:"M4-L7", topic:"Caches", url:"https://youtu.be/5olKjIC91cQ"},
+  {code:"M4-L8", topic:"Tasking and sections", url:"https://youtu.be/tXdSob_NTQg"}
+ ]},
+ { id:5, title:"GPU Programming with CUDA", hours:8, co:"CO5", lectures:[
+  {code:"M5-L1", topic:"GPUs and GPGPU", url:"https://youtu.be/vw2ZrbfBzNM"},
+  {code:"M5-L2", topic:"Heterogeneous computing", url:"https://youtu.be/PG5VETuKTNM"},
+  {code:"M5-L3", topic:"Nvidia compute capabilities and device architectures", url:"https://youtu.be/PG5VETuKTNM"},
+  {code:"M5-L4", topic:"Vector addition", url:"https://youtu.be/0C25k1O0yOo"},
+  {code:"M5-L5", topic:"Returning results from CUDA kernels", url:"https://youtu.be/sAdC1ZV1gg0"},
+  {code:"M5-L6", topic:"CUDA trapezoidal rule I", url:"https://youtu.be/J_ZHY-pVUXw"},
+  {code:"M5-L7", topic:"CUDA trapezoidal rule II", url:"https://youtu.be/ebgPq-N9GYM"},
+  {code:"M5-L8", topic:"CUDA trapezoidal rule III", url:"https://youtu.be/KHW2zh_lsRw"}
+ ]}
+];
+
+/* ----------------------------------------------------------------------------
+   2) STUDY TIME PLANNER CONFIG
+   HOW TO EDIT:
+     multiplier            — study effort per hour of video. 3 = 1x watching +
+                             1x writing notes + 1x solving questions.
+                             Set it to 2 for a fast pass, 4 for a deep pass.
+     perModuleBaseHours    — syllabus/watch hours per module, index 0 → Module 1.
+     videoMinutesPerLecture— leave null to use perModuleBaseHours. If you later
+                             know the real average video length, put it in
+                             minutes (e.g. 22) and the planner will use
+                             lectures × minutes ÷ 60 instead of the syllabus
+                             hours for the "watching" component.
+   Recommended hours for a module  =  base hours  ×  multiplier
+   -------------------------------------------------------------------------- */
+const PLANNER = {
+  multiplier: 3,
+  perModuleBaseHours: [8, 8, 8, 8, 8],
+  videoMinutesPerLecture: null
+};
+
+/* ----------------------------------------------------------------------------
+   Edit the PLANNER block above to change the study plan maths:
+     multiplier: 3  = 1x watching + 1x notes + 1x practising questions
+   Recommended hours per module = base hours x multiplier.
+   If you later know real video lengths, set videoMinutesPerLecture (e.g. 22)
+   and the planner will use lectures x minutes / 60 instead of syllabus hours.
+   -------------------------------------------------------------------------- */
+
+/* ============================================================================
+   =======================  APPLICATION CODE (no edits)  =======================
+   ========================================================================== */
+(function () {
+  "use strict";
+
+  const $  = (sel, root) => (root || document).querySelector(sel);
+  const $$ = (sel, root) => Array.prototype.slice.call((root || document).querySelectorAll(sel));
+  const escapeHtml = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+
+  /* ---------------------------------------------------------------- THEME */
+  const root = document.documentElement;
+  const themeBtn = $("#themeToggle");
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem("lmr-theme"); } catch (e) { savedTheme = null; }
+  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+  function applyTheme(theme) {
+    root.setAttribute("data-theme", theme);
+    const dark = theme === "dark";
+    themeBtn.setAttribute("aria-pressed", String(dark));
+    themeBtn.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  }
+  applyTheme(savedTheme || (prefersDark ? "dark" : "light"));
+  themeBtn.addEventListener("click", function () {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    applyTheme(next);
+    try { localStorage.setItem("lmr-theme", next); } catch (e) {}
+  });
+
+  /* ------------------------------------------------------- HEADER + MOBILE */
+  const header = $("#siteHeader");
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 8);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  const menuBtn = $("#menuBtn");
+  const mobileNav = $("#mobileNav");
+  menuBtn.addEventListener("click", function () {
+    const open = mobileNav.hasAttribute("hidden");
+    if (open) { mobileNav.removeAttribute("hidden"); } else { mobileNav.setAttribute("hidden", ""); }
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+  });
+  $$("#mobileNav a").forEach((a) => a.addEventListener("click", function () {
+    mobileNav.setAttribute("hidden", "");
+    menuBtn.setAttribute("aria-expanded", "false");
+  }));
+
+  /* ----------------------------------------------------------- SCROLL SPY */
+  const navLinks = $$("#navList a");
+  const sectionEls = navLinks.map((a) => $(a.getAttribute("href"))).filter(Boolean);
+  if ("IntersectionObserver" in window && sectionEls.length) {
+    const spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function (a) {
+          a.classList.toggle("active", a.getAttribute("href") === "#" + en.target.id);
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    sectionEls.forEach((s) => spy.observe(s));
+  }
+
+  /* ------------------------------------------------------------ FOOTER YR */
+  $("#year").textContent = new Date().getFullYear();
+
+  /* ============================================== 5) VIDEO LECTURES */
+  const PLAY_SVG = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>';
+  const EXT_SVG  = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg>';
+
+  const accordion = $("#moduleAccordion");
+  const watchedSet = new Set();          // in-memory only (resets on reload)
+
+  const totalLectures = MODULES.reduce((n, m) => n + m.lectures.length, 0);
+
+  function lectureCard(moduleId, lec) {
+    const hasUrl = !!(lec.url && lec.url.trim());
+    const id = "watch-" + lec.code;
+    const badge = hasUrl ? "" : '<span class="badge-soon">Coming soon</span>';
+
+    const head = hasUrl
+      ? '<a class="lec-link" href="' + escapeHtml(lec.url) + '" target="_blank" rel="noopener noreferrer">'
+      : '<div class="lec-link is-disabled" aria-disabled="true">';
+
+    const inner = '<span class="lec-play">' + (hasUrl ? PLAY_SVG : PLAY_SVG) + '</span>' +
+      '<span class="lec-body">' +
+        '<span class="lec-code">' + escapeHtml(lec.code) + '</span>' +
+        '<span class="lec-topic">' + escapeHtml(lec.topic) + '</span>' +
+        (hasUrl ? '<span class="watch-link">Watch on YouTube ' + EXT_SVG + '</span>' : badge) +
+      '</span>';
+
+    return '<li class="lec-card' + (hasUrl ? "" : " disabled") + '" data-code="' + escapeHtml(lec.code) + '" ' +
+      'data-search="' + escapeHtml((lec.code + " " + lec.topic).toLowerCase()) + '">' +
+      head + inner + (hasUrl ? '</a>' : '</div>') +
+      '<div class="lec-foot">' +
+        '<label class="watched" for="' + id + '">' +
+          '<input type="checkbox" id="' + id + '" data-watch="' + escapeHtml(lec.code) + '" />' +
+          '<span>Mark as watched</span>' +
+        '</label>' +
+        badge +
+      '</div>' +
+    '</li>';
+  }
+
+  function renderModules() {
+    accordion.innerHTML = MODULES.map(function (m, i) {
+      return '<div class="acc-item" data-module="' + m.id + '"' + (i === 0 ? " open" : "") + '>' +
+        '<button class="acc-head" type="button" aria-expanded="' + (i === 0) + '" aria-controls="panel-' + m.id + '">' +
+          '<span class="acc-num" aria-hidden="true">M' + m.id + '</span>' +
+          '<span class="acc-title">' +
+            '<strong>Module ' + m.id + ' — ' + escapeHtml(m.title) + '</strong>' +
+            '<span class="acc-sub">' +
+              '<span class="chip">' + m.hours + ' hours</span>' +
+              '<span class="chip co">' + escapeHtml(m.co) + '</span>' +
+              '<span class="chip">' + m.lectures.length + ' lectures</span>' +
+            '</span>' +
+          '</span>' +
+          '<svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>' +
+        '</button>' +
+        '<div class="acc-body" id="panel-' + m.id + '">' +
+          '<div class="acc-progress">' +
+            '<span data-mod-text="' + m.id + '">0 / ' + m.lectures.length + ' watched</span>' +
+            '<span class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="' + m.lectures.length + '" aria-valuenow="0" aria-label="Module ' + m.id + ' progress" data-mod-bar="' + m.id + '"><i></i></span>' +
+          '</div>' +
+          '<ul class="lec-list">' + m.lectures.map((l) => lectureCard(m.id, l)).join("") + '</ul>' +
+        '</div>' +
+      '</div>';
+    }).join("");
+
+    // accordion behaviour
+    $$(".acc-head", accordion).forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        const item = btn.closest(".acc-item");
+        const open = item.hasAttribute("open");
+        if (open) { item.removeAttribute("open"); } else { item.setAttribute("open", ""); }
+        btn.setAttribute("aria-expanded", String(!open));
+      });
+    });
+
+    // watched checkboxes
+    $$("input[data-watch]", accordion).forEach(function (cb) {
+      cb.addEventListener("change", function () {
+        const code = cb.getAttribute("data-watch");
+        if (cb.checked) { watchedSet.add(code); } else { watchedSet.delete(code); }
+        cb.closest(".lec-card").classList.toggle("watched-state", cb.checked);
+        updateProgress();
+      });
+    });
+
+    updateProgress();
+  }
+
+  function updateProgress() {
+    // per module
+    MODULES.forEach(function (m) {
+      const done = m.lectures.filter((l) => watchedSet.has(l.code)).length;
+      const bar = $('[data-mod-bar="' + m.id + '"]');
+      const txt = $('[data-mod-text="' + m.id + '"]');
+      if (bar) {
+        bar.setAttribute("aria-valuenow", String(done));
+        bar.firstElementChild.style.width = (m.lectures.length ? (done / m.lectures.length) * 100 : 0) + "%";
+      }
+      if (txt) txt.textContent = done + " / " + m.lectures.length + " watched";
+    });
+    // overall
+    const done = watchedSet.size;
+    const pct = totalLectures ? (done / totalLectures) * 100 : 0;
+    $("#overallText").textContent = done + " / " + totalLectures + " watched";
+    $("#overallBar").style.width = pct + "%";
+    const wrap = $("#overallBarWrap");
+    wrap.setAttribute("aria-valuenow", String(Math.round(pct)));
+    wrap.parentElement.setAttribute("aria-label", "Overall progress: " + done + " of " + totalLectures + " lectures watched");
+  }
+
+  /* search */
+  const search = $("#lecSearch");
+  const noResults = $("#lecNoResults");
+  function applySearch() {
+    const q = search.value.trim().toLowerCase();
+    let visible = 0;
+    $$(".acc-item", accordion).forEach(function (item) {
+      let shown = 0;
+      $$(".lec-card", item).forEach(function (card) {
+        const hit = !q || card.getAttribute("data-search").indexOf(q) !== -1;
+        card.hidden = !hit;
+        if (hit) shown++;
+      });
+      visible += shown;
+      item.hidden = shown === 0;
+      if (q && shown > 0) {
+        item.setAttribute("open", "");
+        $(".acc-head", item).setAttribute("aria-expanded", "true");
+      }
+    });
+    noResults.classList.toggle("show", visible === 0);
+  }
+  search.addEventListener("input", applySearch);
+  search.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { search.value = ""; applySearch(); }
+  });
+
+  /* expand / collapse all */
+  const expandBtn = $("#expandAll");
+  expandBtn.addEventListener("click", function () {
+    const items = $$(".acc-item", accordion).filter((i) => !i.hidden);
+    const anyClosed = items.some((i) => !i.hasAttribute("open"));
+    items.forEach(function (i) {
+      if (anyClosed) { i.setAttribute("open", ""); } else { i.removeAttribute("open"); }
+      $(".acc-head", i).setAttribute("aria-expanded", String(anyClosed));
+    });
+    expandBtn.textContent = anyClosed ? "Collapse all modules" : "Expand all modules";
+  });
+
+  renderModules();
+
+  /* -------------------------------------------------- lazy YouTube players
+     Any element with class "player-frame" + data-video-id gets a poster
+     facade. The real iframe is created only when the user clicks play, so
+     the page stays fast on mobile data. Works for 1..n players. */
+  $$(".player-frame").forEach(function (frame) {
+    const facade = frame.querySelector(".player-facade");
+    if (!facade) return;
+    facade.addEventListener("click", function () {
+      const vid = frame.getAttribute("data-video-id");
+      if (!vid) return;
+      /* YouTube blocks embeds when the page is opened straight from disk
+         (file://). In that case send the viewer to YouTube instead of
+         showing a broken player. Hosted pages embed normally. */
+      if (window.location.protocol === "file:") {
+        window.open("https://www.youtube.com/watch?v=" + vid, "_blank", "noopener,noreferrer");
+        return;
+      }
+      const iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + vid + "?autoplay=1&rel=0";
+      iframe.title = (frame.closest("section") || document).id === "hero"
+        ? "Introduction to parallel programming — BCS702"
+        : "Featured lecture — BCS702";
+      iframe.setAttribute("allow", "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share");
+      iframe.setAttribute("allowfullscreen", "");
+      iframe.setAttribute("loading", "lazy");
+      iframe.setAttribute("referrerpolicy", "strict-origin-when-cross-origin");
+      frame.innerHTML = "";
+      frame.appendChild(iframe);
+    });
+  });
+
+  /* -------------------------- hero module chips: open the chosen module */
+  $$("[data-open-module]").forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      const id = chip.getAttribute("data-open-module");
+      const item = document.querySelector('.acc-item[data-module="' + id + '"]');
+      if (!item) return;
+      $$(".acc-item", accordion).forEach(function (it) {
+        it.removeAttribute("open");
+        const h = it.querySelector(".acc-head");
+        if (h) h.setAttribute("aria-expanded", "false");
+      });
+      item.setAttribute("open", "");
+      const head = item.querySelector(".acc-head");
+      if (head) head.setAttribute("aria-expanded", "true");
+    });
+  });
+
+  /* ==================================== 6) VTU STUDY TIME PLANNER */
+  const planModulesEl = $("#planModules");
+  const plannerForm = $("#plannerForm");
+  const daysInput = $("#daysLeft");
+  const hoursInput = $("#hoursPerDay");
+  const planResults = $("#planResults");
+  const planSummary = $("#planSummary");
+
+  // build module checkboxes
+  planModulesEl.innerHTML = MODULES.map(function (m) {
+    return '<label class="mod-check" for="plan-m' + m.id + '">' +
+      '<input type="checkbox" id="plan-m' + m.id + '" value="' + m.id + '" checked />' +
+      '<span><strong>M' + m.id + '</strong> &middot; ' + escapeHtml(m.title) + ' <span class="chip co" style="font-size:.64rem">' + escapeHtml(m.co) + '</span></span>' +
+    '</label>';
+  }).join("");
+
+  // base hours per module: real video durations if provided, else syllabus hours
+  function baseHours(m) {
+    // Real video durations are used when provided; otherwise syllabus hours apply.
+    if (PLANNER.videoMinutesPerLecture && m.lectures.length) {
+      return (m.lectures.length * PLANNER.videoMinutesPerLecture) / 60;
+    }
+    return PLANNER.perModuleBaseHours[m.id - 1] != null ? PLANNER.perModuleBaseHours[m.id - 1] : m.hours;
+  }
+  function recommendedHours(m) { return baseHours(m) * PLANNER.multiplier; }
+  const fmt = (n) => (Math.round(n * 10) / 10).toString();
+
+  function selectedModules() {
+    return MODULES.filter(function (m) { return $("#plan-m" + m.id).checked; });
+  }
+
+  function buildPlan(e) {
+    if (e) e.preventDefault();
+    const days = Math.max(1, Math.min(365, Math.round(Number(daysInput.value) || 0)));
+    const perDay = Math.max(0.5, Math.min(16, Number(hoursInput.value) || 0));
+    daysInput.value = days; hoursInput.value = perDay;
+
+    const mods = selectedModules();
+    if (!mods.length) {
+      planResults.hidden = true;
+      planSummary.textContent = "Select at least one module to build a plan.";
+      return;
+    }
+
+    const available = days * perDay;
+    const recommended = mods.reduce((s, m) => s + recommendedHours(m), 0);
+    const deficit = recommended - available;
+    const daysNeeded = Math.ceil(recommended / perDay);
+
+    /* KPIs */
+    $("#kpiAvailable").innerHTML = fmt(available) + ' <small>h</small>';
+    $("#kpiRecommended").innerHTML = fmt(recommended) + ' <small>h</small>';
+    $("#kpiPerDay").innerHTML = fmt(perDay) + ' <small>h/day</small>';
+    $("#kpiDays").innerHTML = Math.min(days, daysNeeded) + ' <small>of ' + days + '</small>';
+
+    /* alert */
+    const warnIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3Z"/><path d="M12 9v5M12 17h.01"/></svg>';
+    const okIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+    if (deficit > 0) {
+      $("#planAlert").innerHTML = '<div class="alert alert-warn">' + warnIcon +
+        '<span><strong>Your available time is less than the recommended time.</strong> You have ' + fmt(available) +
+        ' h but the selected modules need about ' + fmt(recommended) + ' h (' + fmt(deficit) +
+        ' h short). You would need roughly ' + daysNeeded + ' days at ' + fmt(perDay) +
+        ' h/day. Try adding study hours, adding days, or dropping one module — then rebuild the plan.</span></div>';
+    } else {
+      $("#planAlert").innerHTML = '<div class="alert alert-ok">' + okIcon +
+        '<span><strong>You have enough time.</strong> ' + fmt(available) + ' h available against ' + fmt(recommended) +
+        ' h recommended — about ' + fmt(available - recommended) + ' h spare for revision and previous papers.</span></div>';
+    }
+
+    /* per-module table */
+    $("#planModuleTable").innerHTML = mods.map(function (m) {
+      return '<tr><td><strong>M' + m.id + '</strong> ' + escapeHtml(m.title) + '</td>' +
+        '<td>' + fmt(baseHours(m)) + ' h</td>' +
+        '<td><strong>' + fmt(recommendedHours(m)) + ' h</strong></td></tr>';
+    }).join("");
+
+    /* day-by-day schedule */
+    const steps = [
+      { label: "Step 1 — Watch the lectures in session order", share: 0.5 },
+      { label: "Step 2 — Write short notes (one page per lecture)", share: 0.25 },
+      { label: "Step 3 — Tutorial problems + previous VTU papers", share: 0.25 }
+    ];
+
+    // Build the task queue first: 3 practice steps per module (watch / notes / solve).
+    // Then pack the queue into days of `perDay` hours. Whatever does not fit is
+    // surfaced as an overflow notice instead of being silently dropped.
+    const tasks = [];
+    mods.forEach(function (m) {
+      const rec = recommendedHours(m);
+      steps.forEach(function (s) {
+        const hrs = rec * s.share;
+        if (hrs > 0.05) tasks.push({ module: "M" + m.id, moduleTitle: m.title, label: s.label, hours: hrs });
+      });
+    });
+
+    // Distribute hours across days. Skip days entirely when the user asks for
+    // more days than they need (e.g. 60 days for 10 h of work), so the
+    // schedule stays realistic instead of spreading 20 minutes a day.
+    const totalHours = tasks.reduce((sum, t) => sum + t.hours, 0);
+    const studyDays = Math.max(1, Math.min(days, Math.ceil(totalHours / perDay)));
+    const hoursPerStudyDay = totalHours / studyDays;
+
+    // Schedule rows are emitted in module/step order, then mapped onto calendar
+    // days. If there are more days than study days, the remaining ones become
+    // "flex + revision" days instead of being ignored.
+    const studyRows = [];
+    let dayIdx = 1, remaining = hoursPerStudyDay, current = [];
+    tasks.forEach(function (t) {
+      let hrs = t.hours;
+      while (hrs > 0.001) {
+        const use = Math.min(remaining, hrs);
+        current.push({ module: t.module, moduleTitle: t.moduleTitle, label: t.label });
+        hrs -= use;
+        remaining -= use;
+        if (remaining <= 0.05) {
+          studyRows.push({ items: current });
+          current = []; dayIdx++; remaining = hoursPerStudyDay;
+        }
+      }
+    });
+    if (current.length) studyRows.push({ items: current });
+    const carryOver = 0; // every task always fits: studyDays is derived from totalHours
+
+    // calendar mapping: first study day is day 1, last study day is exam-eve
+    const step = studyRows.length > 1 ? (days - 1) / (studyRows.length - 1) : 0;
+    const rows = studyRows.map(function (r, i) {
+      return { day: Math.min(days, Math.max(1, Math.round(1 + i * step))), items: r.items, type: "study" };
+    });
+
+    // leftover calendar days -> flexible revision days, one module each
+    const usedDays = {};
+    rows.forEach(function (r) { usedDays[r.day] = true; });
+    const labels = mods.map((m) => ({ module: "M" + m.id, moduleTitle: m.title }));
+    let cycle = 0, leftDays = 0;
+    for (let d = 1; d <= days; d++) {
+      if (usedDays[d]) continue;
+      leftDays++;
+      const m = labels[cycle++ % labels.length];
+      rows.push({
+        day: d,
+        type: "revision",
+        items: [{ module: m.module, moduleTitle: m.moduleTitle, label: "Step 4 — Revise with one-page summary + quiz session" }]
+      });
+    }
+    rows.sort(function (a, b) { return a.day - b.day; });
+
+    let lastDay = 0;
+    $("#planSchedule").innerHTML = rows.map(function (r) {
+      const seen = {};
+      const focus = [];
+      r.items.forEach(function (it) {
+        if (!seen[it.module]) { seen[it.module] = 1; focus.push({ module: it.module, title: it.moduleTitle }); }
+      });
+      const steps_ = r.items.map((it) => it.label).filter(function (v, i, a) { return a.indexOf(v) === i; });
+      const gap = r.day - (lastDay || 0);
+      const tag = (gap > 1) ? ' <span class="small muted">(' + gap + 'd)</span>' : '';
+      lastDay = r.day;
+      return '<tr><td class="d-day">Day ' + r.day + tag + '</td>' +
+        '<td>' + focus.map(function (f) {
+          return '<strong>' + f.module + '</strong>' + (f.title ? ' · ' + escapeHtml(f.title) : '');
+        }).join('<br />') + '</td>' +
+        '<td>' + steps_.join('<br />') + '</td></tr>';
+    }).join("") +
+    (carryOver > 0.05
+      ? '<tr><td class="d-day" style="color:#8a5a0f">Overflow</td><td>All selected</td>' +
+        '<td><strong>' + fmt(carryOver) + ' h of work does not fit before the exam.</strong> ' +
+        'Add days or hours, or drop a module.</td></tr>'
+      : "");
+
+    planResults.hidden = false;
+    planSummary.textContent = "Plan built for " + mods.length + " module" + (mods.length > 1 ? "s" : "") +
+      ": " + studyRows.length + " working day" + (studyRows.length > 1 ? "s" : "") +
+      (leftDays > 0 ? " + " + leftDays + " revision/flex day" + (leftDays > 1 ? "s" : "") : "") +
+      ", spread over the " + days + " day" + (days > 1 ? "s" : "") + " you have.";
+  }
+
+  plannerForm.addEventListener("submit", buildPlan);
+  $("#planReset").addEventListener("click", function () {
+    daysInput.value = 14;
+    hoursInput.value = 3;
+    $$("#planModules input").forEach((cb) => { cb.checked = true; });
+    planResults.hidden = true;
+    planSummary.textContent = "Choose your options and select “Build my plan”.";
+  });
+  [daysInput, hoursInput].forEach((inp) => inp.addEventListener("change", function () {
+    if (!planResults.hidden) buildPlan();
+  }));
+  $$("#planModules input").forEach((cb) => cb.addEventListener("change", function () {
+    if (!planResults.hidden) buildPlan();
+  }));
+
+  // first paint: show a plan so the section is never empty
+  buildPlan();
+
+})();
+</script>
+</body>
+</html>

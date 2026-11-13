@@ -1,0 +1,35 @@
+# ============================================================
+# Render Blueprint — Dr. Lokesh M R · BCS702 lecture series
+# Static site: no build step, no server, no database.
+# Docs: https://render.com/docs/blueprint-spec
+# ============================================================
+services:
+  - type: web
+    name: bcs702-lectures
+    runtime: static
+    # The site is already plain HTML/CSS/JS, so there is nothing to build.
+    # (If a build command is omitted, Render just copies the publish path.)
+    staticPublishPath: .
+    autoDeployTrigger: commit     # redeploy on every push to the connected branch
+    headers:
+      # Never cache the HTML shell, so content edits show up immediately
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /
+        name: Cache-Control
+        value: no-cache
+      # The portrait rarely changes — cache it hard
+      - path: /dr_lokesh_professor_new.png
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      # Baseline hardening
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      - path: /*
+        name: Permissions-Policy
+        value: geolocation=(), camera=(), microphone=()
