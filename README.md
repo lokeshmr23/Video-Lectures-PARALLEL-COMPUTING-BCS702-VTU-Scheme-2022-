@@ -60,7 +60,7 @@
 | M1-L4 | Vector addition| [Watch on YouTube](https://youtu.be/0C25k1O0yOo). |
 | M1-L5 | Returning results from CUDA kernels| [Watch on YouTube](https://youtu.be/sAdC1ZV1gg0). |
 | M1-L6 | CUDA trapezoidal rule I| [Watch on YouTube](https://youtu.be/J_ZHY-pVUXw). |
-| M1-L7 | CUDA trapezoidal rule II| [Watch on YouTube](). |
+| M1-L7 | CUDA trapezoidal rule II| [Watch on YouTube](https://youtu.be/ebgPq-N9GYM). |
 | M1-L8 | CUDA trapezoidal rule III| [Watch on YouTube](). |
 
 More modules and lectures will be added as they are published. ⭐ Star this repo to stay updated! COURSE OUTCOMES PARALLEL COMPUTING Semester VII | Course Code: BCS702 | Credits: 03
